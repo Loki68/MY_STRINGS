@@ -1,6 +1,7 @@
 LIBRARY = s21_string.a
 CC = gcc
 ARR = ar
+RL = ranlib
 #CFLAGS = -Wall -Wextra -Werror -std=c11
 CFLAGS = -Wall -Wextra -std=c11
 
@@ -9,7 +10,10 @@ OBJECTS = s21_strlen.o s21_memchr.o s21_memcmp.o s21_memcpy.o s21_memset.o s21_s
 
 all : clean s21_string.a
 
-s21_string.a : s21_strlen s21_memchr s21_memcmp s21_memcpy s21_memset s21_strncat s21_strchr s21_strncmp s21_strncpy s21_sprintf
+s21_string.a  : build_archieve
+	$(RL) $(LIBRARY)
+
+build_archieve: s21_strlen s21_memchr s21_memcmp s21_memcpy s21_memset s21_strncat s21_strchr s21_strncmp s21_strncpy s21_sprintf
 	$(ARR) r $(LIBRARY) $(OBJECTS)
 
 s21_memchr :
