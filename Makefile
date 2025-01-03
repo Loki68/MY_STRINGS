@@ -4,7 +4,7 @@ ARR = ar
 RL = ranlib
 #CFLAGS = -Wall -Wextra -Werror -std=c11
 CFLAGS = -Wall -Wextra -std=c11
-
+#site: https://cplusplus.com/reference/cstring/memcpy/
 SOURCE = s21_strlen.c s21_memchr.c s21_memcmp.c s21_memcpy.c s21_memset.c s21_strncat.c s21_strchr.c s21_strncmp.c s21_strncpy.c sprintscan/s21_sprintf.c
 OBJECTS = s21_strlen.o s21_memchr.o s21_memcmp.o s21_memcpy.o s21_memset.o s21_strncat.o s21_strchr.o s21_strncmp.o s21_strncpy.o s21_sprintf.o
 
