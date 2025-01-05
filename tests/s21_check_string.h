@@ -15,6 +15,7 @@
 #define T_STR_1 "Hello world!"
 #define T_STR_2 "Hello world"
 #define T_STR_SHORT "Hello"
+#define T_STR_A_SHORT "KHA..An!!11"
 #define T_EMPTY ""
 //символы для функций поиска символов:
 //существующий в строке, нулевой и не существующий
