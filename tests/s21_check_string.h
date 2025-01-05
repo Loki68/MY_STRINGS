@@ -33,5 +33,6 @@
 //а в файле название_тестируемой_функции.c добавить такую же шаблонную реализацию 
 Suite *s21_memchr_suite(void);
 Suite *s21_memcmp_suite(void);
+Suite *s21_memcpy_suite(void);
 
 Suite *s21_strlen_suite(void);
