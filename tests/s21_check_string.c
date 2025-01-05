@@ -1,5 +1,6 @@
 #include "s21_check_string.h" 
-
+//TODO
+//check all
 int main(void){
     int number_failed=0;
     //Suite *suite=NULL;

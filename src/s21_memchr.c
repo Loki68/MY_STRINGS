@@ -17,7 +17,7 @@ void *s21_memchr(const void *str, int c, s21_size_t n) {
        index++)
     ;
 
-  if(index<n)
+  if(index<count)
     result=(string+index);
 
   return result;

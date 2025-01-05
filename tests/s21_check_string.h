@@ -13,6 +13,7 @@
 //в процессе тестирования строки будут изменяться, так что двойной набор
 #define T21_STR_1 "Hello world!"
 #define T_STR_1 "Hello world!"
+#define T_STR_2 "Hello world"
 #define T_STR_SHORT "Hello"
 #define T_EMPTY ""
 //символы для функций поиска символов:

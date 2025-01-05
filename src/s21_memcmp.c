@@ -12,7 +12,7 @@ int s21_memcmp(const void *str1, const void *str2, s21_size_t n) {
   for (; index < count && first_string[index] == second_string[index]; index++)
     ;
 
-  if (count - index > 1)
+  if (count - index)
     result = first_string[index] - second_string[index];
 
   return result;
