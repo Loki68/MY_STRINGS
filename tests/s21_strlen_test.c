@@ -1,6 +1,6 @@
 #include "s21_check_string.h"
 
-//1 test
+//same string
 START_TEST (test_s21_strlen_1)
 {
   char *str=T21_STR_1;
@@ -9,14 +9,15 @@ START_TEST (test_s21_strlen_1)
 
   s21_str_size=s21_strlen(str);
   str_size=strlen(str);
-  //ck_assert(s21_str_size==str_size);
+  
+  ck_assert(s21_str_size==str_size);
   //or
 
-  ck_assert_msg(s21_str_size==str_size,"Значения размеров строки: %s\nсовпадают", str);
+  //ck_assert_msg(s21_str_size==str_size,"Значения размеров строки: %s\nсовпадают", str);
 }
 END_TEST
 
-//2 test
+//разные строки
 START_TEST (test_s21_strlen_2)
 {
   char *str=T21_STR_1;
@@ -31,6 +32,37 @@ START_TEST (test_s21_strlen_2)
   ck_assert_msg(s21_str_size<str_size,"Значения размеров строки: %s\nсовпадают", str);
 }
 END_TEST
+
+//пустая строка
+START_TEST (test_s21_strlen_3)
+{
+  s21_size_t s21_str_size=0;
+  size_t str_size=0;
+
+  s21_str_size=s21_strlen(T_EMPTY);
+  str_size=strlen(T_EMPTY);
+  
+  ck_assert_msg(s21_str_size==str_size,"Значения размеров строки: %ld и %ld не совпадают", str_size,s21_str_size);
+}
+END_TEST
+
+// //segfault not works
+// //нулевые строки
+// START_TEST (test_s21_strlen_3)
+// {
+//   char *str=T21_STR_1;
+//   s21_size_t s21_str_size=0;
+//   size_t str_size=0;
+
+//   //s21_str_size=s21_strlen(S21_NULL);
+//   //str_size=strlen(NULL);
+//   //ck_assert(s21_str_size==str_size);
+//   //or
+//   s21_strlen(S21_NULL);
+//   ck_abort();
+//   //ck_assert_msg(s21_str_size==str_size,"Значения размеров строки: %s\nсовпадают", str);
+// }
+// END_TEST
 
 
 
@@ -50,6 +82,9 @@ Suite *s21_strlen_suite(void){
   tc_s21_strlen_limits=tcase_create("Limits");
 
   tcase_add_test(tc_s21_strlen_limits,test_s21_strlen_2);
+  suite_add_tcase(suite, tc_s21_strlen_limits);
+
+  tcase_add_test(tc_s21_strlen_limits,test_s21_strlen_3);
   suite_add_tcase(suite, tc_s21_strlen_limits);
 
   return suite;

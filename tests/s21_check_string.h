@@ -14,6 +14,7 @@
 #define T21_STR_1 "Hello world!"
 #define T_STR_1 "Hello world!"
 #define T_STR_SHORT "Hello"
+#define T_EMPTY ""
 //символы для функций поиска символов:
 //существующий в строке, нулевой и не существующий
 #define EXIST_CH 'w'
@@ -24,11 +25,12 @@
 //находящийся внутри строки, за ее пределами и отрицательный
 #define NUMBER 10
 #define OVERFLOW_NUMBER 37
-#define BELOW_ZERO_NUMBER -5
+#define NEGATIVE_NUMBER -5
 
 //чтобы добавить новый набор тестов, нужно просто добавить аналогичную строку ниже:
 //  Suite *подходящее_название(void);
 //а в файле название_тестируемой_функции.c добавить такую же шаблонную реализацию 
 Suite *s21_memchr_suite(void);
+Suite *s21_memcmp_suite(void);
 
 Suite *s21_strlen_suite(void);
