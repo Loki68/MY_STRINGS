@@ -40,9 +40,9 @@ TESTS_DIR = ../tests
 # Собственно конечный тестовый файл
 TEST_PROGRAM = $(TESTS_DIR)/s21_check_string
 # Переменная для файлов исходного кода тестов
-TESTS = $(TESTS_DIR)/s21_check_string.c $(TESTS_DIR)/s21_memchr_test.c $(TESTS_DIR)/s21_strlen_test.c
+TESTS = $(TESTS_DIR)/s21_check_string.c $(TESTS_DIR)/s21_memchr_test.c $(TESTS_DIR)/s21_memcmp_test.c $(TESTS_DIR)/s21_strlen_test.c
 # Переменная для объектных файлов
-TESTS_OBJECTS = $(TESTS_DIR)/s21_check_string.o $(TESTS_DIR)/s21_memchr_test.o $(TESTS_DIR)/s21_strlen_test.o
+TESTS_OBJECTS = $(TESTS_DIR)/s21_check_string.o $(TESTS_DIR)/s21_memchr_test.o $(TESTS_DIR)/s21_memcmp_test.o $(TESTS_DIR)/s21_strlen_test.o
 # Самая интересная часть. здесь указаны флаги для сборки только на линуксе.
 # С этим связан нюанс. на маке достаточно -lcheck, но наличие их всех не вызывает никаких проблем вовсе.
 # По итогу, просто обернем это в if с выбором системы и все.
@@ -130,23 +130,26 @@ s21_sprintf :
 test : build_tests test_program 
 	$(TEST_PROGRAM)
 	
-test_program : s21_string.a build_tests memchr_tests strlen_tests
+test_program : s21_string.a build_tests s21_memchr_tests s21_memcmp_tests s21_strlen_tests
 	$(CC) $(TESTS_OBJECTS) -o $(TEST_PROGRAM) $(LIB) $(TEST_FLAGS) 
 
 build_tests :
 	$(CC) $(CFLAGS) -c $(TESTS_DIR)/s21_check_string.c -o $(TESTS_DIR)/s21_check_string.o
 
-memchr_tests :
+s21_memchr_tests :
 	$(CC) $(CFLAGS) -c $(TESTS_DIR)/s21_memchr_test.c -o $(TESTS_DIR)/s21_memchr_test.o
 
-strlen_tests :
+s21_memcmp_tests :
+	$(CC) $(CFLAGS) -c $(TESTS_DIR)/s21_memcmp_test.c -o $(TESTS_DIR)/s21_memcmp_test.o
+
+s21_strlen_tests :
 	$(CC) $(CFLAGS) -c $(TESTS_DIR)/s21_strlen_test.c -o $(TESTS_DIR)/s21_strlen_test.o
 #end of Test stages
 
 #Стадия построения отчета о покрытии кода тестами - gcov_report
 # Напоминаю, что подробности по ссылке:
 # https://ps-group.github.io/cxx/coverage_gcc
-gcov_report : clean
+gcov_report :
 # В соответствии с требованием создания отчета, собираем:
 # из файлов исходного кода функций нашей библиотеки $(SOURCE)
 # из файлов исходного кода тестов $(TESTS)
