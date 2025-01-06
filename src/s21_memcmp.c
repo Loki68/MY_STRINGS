@@ -9,7 +9,7 @@ int s21_memcmp(const void *str1, const void *str2, s21_size_t n) {
   const char *first_string = (const char *)str1;
   const char *second_string = (const char *)str2;
 
-  for (; index < count && first_string[index] == second_string[index]; index++)
+  for (; index < count && first_string[index] == second_string[index] && first_string[index] ; index++)
     ;
 
   if (count - index)

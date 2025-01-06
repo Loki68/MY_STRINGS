@@ -1,17 +1,11 @@
 #include "s21_check_string.h" 
 
-
-char s21_str[]="Hello world!";
-char s21_str_1[]="there is no power as no knowledge";
-
-char str[]="Hello world!";
-char str_1[]="there is no power as no knowledge";
-
-
 //одинаковые строки на вход
-//правильный размер. остальное - неопределенное поведение
+//правильный размер. 
 START_TEST (test_s21_memcpy_1)
 {
+  char s21_str[]="Hello world!";
+  char str[]="Hello world!";
   char* s21_memcpy_result=NULL;
   char* memcpy_result=NULL;
 
@@ -22,9 +16,27 @@ START_TEST (test_s21_memcpy_1)
 }
 END_TEST
 
+// //больший размер
+// //didn't works in test
+// START_TEST (test_s21_memcpy_5)
+// {
+//   char s21_str[]="Hello world!";
+//   char str[]="Hello world!";
+//   char* s21_memcpy_result=NULL;
+//   char* memcpy_result=NULL;
+
+//   s21_memcpy_result=(char*)s21_memcpy(s21_str,T_STR_A_SHORT,OVERFLOW_NUMBER);
+//   memcpy_result=(char*)memcpy(str,T_STR_A_SHORT,OVERFLOW_NUMBER);
+  
+//   ck_assert_str_eq(s21_memcpy_result,memcpy_result);
+// }
+// END_TEST
+
 //второй вариант строк
 START_TEST (test_s21_memcpy_2)
 {
+  char s21_str_1[]="there is no power as no knowledge";
+  char str_1[]="there is no power as no knowledge";
   char* s21_memcpy_result=NULL;
   char* memcpy_result=NULL;
 
@@ -38,6 +50,8 @@ END_TEST
 //с нулем в строке
 START_TEST (test_s21_memcpy_3)
 {
+  char s21_str_1[]="there is no power as no knowledge";
+  char str_1[]="there is no power as no knowledge";
   char* s21_memcpy_result=NULL;
   char* memcpy_result=NULL;
 
@@ -51,6 +65,8 @@ END_TEST
 //нуль копируемых символов
 START_TEST (test_s21_memcpy_4)
 {
+  char s21_str_1[]="there is no power as no knowledge";
+  char str_1[]="there is no power as no knowledge";
   char* s21_memcpy_result=NULL;
   char* memcpy_result=NULL;
 
@@ -62,6 +78,7 @@ START_TEST (test_s21_memcpy_4)
 END_TEST
 //
 
+//отрицательное - неопределенное поведение
 Suite *s21_memcpy_suite(void){
   Suite *suite;
   TCase *tc_s21_memcpy;
@@ -74,6 +91,10 @@ Suite *s21_memcpy_suite(void){
 ////правильный размер. остальное - неопределенное поведение
   tcase_add_test(tc_s21_memcpy, test_s21_memcpy_1);
   suite_add_tcase(suite, tc_s21_memcpy);
+
+// ////больший размер  
+//   tcase_add_test(tc_s21_memcpy, test_s21_memcpy_5);
+//   suite_add_tcase(suite, tc_s21_memcpy);
 
 ////второй вариант строк
   tcase_add_test(tc_s21_memcpy, test_s21_memcpy_2);

@@ -46,46 +46,23 @@ START_TEST (test_s21_strlen_3)
 }
 END_TEST
 
-// //segfault not works
-// //нулевые строки
-// START_TEST (test_s21_strlen_3)
-// {
-//   char *str=T21_STR_1;
-//   s21_size_t s21_str_size=0;
-//   size_t str_size=0;
-
-//   //s21_str_size=s21_strlen(S21_NULL);
-//   //str_size=strlen(NULL);
-//   //ck_assert(s21_str_size==str_size);
-//   //or
-//   s21_strlen(S21_NULL);
-//   ck_abort();
-//   //ck_assert_msg(s21_str_size==str_size,"Значения размеров строки: %s\nсовпадают", str);
-// }
-// END_TEST
-
-
-
-//1 suite нужно названия подобрать
+//нулевые строки дают сегу
 Suite *s21_strlen_suite(void){
   Suite *suite;
   TCase *tc_s21_strlen;
-  TCase *tc_s21_strlen_limits;
 
   suite=suite_create("s21_strlen");
 
-  tc_s21_strlen=tcase_create("Core");
+  tc_s21_strlen=tcase_create("S21_strlen");
 
   tcase_add_test(tc_s21_strlen, test_s21_strlen_1);
   suite_add_tcase(suite, tc_s21_strlen);
 
-  tc_s21_strlen_limits=tcase_create("Limits");
+  tcase_add_test(tc_s21_strlen,test_s21_strlen_2);
+  suite_add_tcase(suite, tc_s21_strlen);
 
-  tcase_add_test(tc_s21_strlen_limits,test_s21_strlen_2);
-  suite_add_tcase(suite, tc_s21_strlen_limits);
-
-  tcase_add_test(tc_s21_strlen_limits,test_s21_strlen_3);
-  suite_add_tcase(suite, tc_s21_strlen_limits);
+  tcase_add_test(tc_s21_strlen,test_s21_strlen_3);
+  suite_add_tcase(suite, tc_s21_strlen);
 
   return suite;
 }

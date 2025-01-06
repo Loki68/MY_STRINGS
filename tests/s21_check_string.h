@@ -28,7 +28,7 @@
 //находящийся внутри строки, за ее пределами и отрицательный
 #define ZERO_NUMBER 0
 #define NUMBER 10
-#define OVERFLOW_NUMBER 37
+#define OVERFLOW_NUMBER 50
 #define NEGATIVE_NUMBER -5
 
 //чтобы добавить новый набор тестов, нужно просто добавить аналогичную строку ниже:
@@ -39,5 +39,5 @@ Suite *s21_memcmp_suite(void);
 Suite *s21_memcpy_suite(void);
 Suite *s21_memset_suite(void);
 Suite *s21_strchr_suite(void);
-
 Suite *s21_strlen_suite(void);
+Suite *s21_strncat_suite(void);
