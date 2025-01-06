@@ -40,9 +40,9 @@ TESTS_DIR = ../tests
 # Собственно конечный тестовый файл
 TEST_PROGRAM = $(TESTS_DIR)/s21_check_string
 # Переменная для файлов исходного кода тестов
-TESTS = $(TESTS_DIR)/s21_check_string.c $(TESTS_DIR)/s21_memchr_test.c $(TESTS_DIR)/s21_memcmp_test.c $(TESTS_DIR)/s21_memcpy_test.c $(TESTS_DIR)/s21_memset_test.c $(TESTS_DIR)/s21_strchr_test.c $(TESTS_DIR)/s21_strlen_test.c $(TESTS_DIR)/s21_strncat_test.c $(TESTS_DIR)/s21_strncmp_test.c $(TESTS_DIR)/s21_sprintf_test.c
+TESTS = $(TESTS_DIR)/s21_check_string.c $(TESTS_DIR)/s21_memchr_test.c $(TESTS_DIR)/s21_memcmp_test.c $(TESTS_DIR)/s21_memcpy_test.c $(TESTS_DIR)/s21_memset_test.c $(TESTS_DIR)/s21_strchr_test.c $(TESTS_DIR)/s21_strlen_test.c $(TESTS_DIR)/s21_strncat_test.c $(TESTS_DIR)/s21_strncmp_test.c $(TESTS_DIR)/s21_strncpy_test.c $(TESTS_DIR)/s21_sprintf_test.c
 # Переменная для объектных файлов
-TESTS_OBJECTS = $(TESTS_DIR)/s21_check_string.o $(TESTS_DIR)/s21_memchr_test.o $(TESTS_DIR)/s21_memcmp_test.o $(TESTS_DIR)/s21_memcpy_test.o $(TESTS_DIR)/s21_memset_test.o $(TESTS_DIR)/s21_strchr_test.o $(TESTS_DIR)/s21_strlen_test.o $(TESTS_DIR)/s21_strncat_test.o $(TESTS_DIR)/s21_strncmp_test.o $(TESTS_DIR)/s21_sprintf_test.o
+TESTS_OBJECTS = $(TESTS_DIR)/s21_check_string.o $(TESTS_DIR)/s21_memchr_test.o $(TESTS_DIR)/s21_memcmp_test.o $(TESTS_DIR)/s21_memcpy_test.o $(TESTS_DIR)/s21_memset_test.o $(TESTS_DIR)/s21_strchr_test.o $(TESTS_DIR)/s21_strlen_test.o $(TESTS_DIR)/s21_strncat_test.o $(TESTS_DIR)/s21_strncmp_test.o $(TESTS_DIR)/s21_strncpy_test.o $(TESTS_DIR)/s21_sprintf_test.o
 # Самая интересная часть. здесь указаны флаги для сборки только на линуксе.
 # С этим связан нюанс. на маке достаточно -lcheck, но наличие их всех не вызывает никаких проблем вовсе.
 # По итогу, просто обернем это в if с выбором системы и все.
@@ -130,7 +130,7 @@ s21_sprintf :
 test : build_tests test_program 
 	$(TEST_PROGRAM)
 	
-test_program : s21_string.a build_tests s21_memchr_tests s21_memcmp_tests s21_memcpy_tests s21_memset_tests s21_strchr_tests s21_strlen_tests s21_strncat_tests s21_strncmp_tests s21_sprintf_tests
+test_program : s21_string.a build_tests s21_memchr_tests s21_memcmp_tests s21_memcpy_tests s21_memset_tests s21_strchr_tests s21_strlen_tests s21_strncat_tests s21_strncmp_tests s21_strncpy_tests s21_sprintf_tests
 	$(CC) $(TESTS_OBJECTS) -o $(TEST_PROGRAM) $(LIB) $(TEST_FLAGS) 
 
 build_tests :
@@ -159,6 +159,11 @@ s21_strncat_tests :
 
 s21_strncmp_tests :
 	$(CC) $(CFLAGS) -c $(TESTS_DIR)/s21_strncmp_test.c -o $(TESTS_DIR)/s21_strncmp_test.o
+
+s21_strncpy_tests :
+	$(CC) $(CFLAGS) -c $(TESTS_DIR)/s21_strncpy_test.c -o $(TESTS_DIR)/s21_strncpy_test.o
+
+
 
 s21_sprintf_tests :
 	$(CC) $(CFLAGS) -c $(TESTS_DIR)/s21_sprintf_test.c -o $(TESTS_DIR)/s21_sprintf_test.o

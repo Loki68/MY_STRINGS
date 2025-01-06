@@ -20,6 +20,7 @@ int main(void){
     srunner_add_suite (srunner, s21_strncat_suite());
     srunner_add_suite (srunner, s21_strlen_suite());
     srunner_add_suite (srunner, s21_strncmp_suite());
+    srunner_add_suite (srunner, s21_strncpy_suite());
 
     srunner_run_all(srunner, CK_NORMAL);
     number_failed = srunner_ntests_failed(srunner);

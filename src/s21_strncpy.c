@@ -8,8 +8,9 @@ char *s21_strncpy(char *dest, const char *src, s21_size_t n){
 
     for(;index<n;dest[index]=src[index],index++);
 
-    if(index<dest_length)
-        for(;index<dest_length;dest[index]='\0',index++);
+    //по справочнику этого быть не должно,а оно есть
+    // if(index<dest_length)
+    //     for(;index<dest_length;dest[index]='\0',index++);
 
     return dest;
 }
