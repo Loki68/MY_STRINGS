@@ -1,17 +1,15 @@
 #include "s21_check_string.h" 
 //TODO
-//check all
+//check all before strchr because segfault it's because NULL
 int main(void){
     int number_failed=0;
-    //Suite *suite=NULL;
     SRunner *srunner=NULL;
 
-    //suite = s21_strlen_suite();
-    //srunner = srunner_create(suite);
     srunner = srunner_create(s21_memchr_suite());
     srunner_add_suite (srunner, s21_memcmp_suite());
     srunner_add_suite (srunner, s21_memcpy_suite());
     srunner_add_suite (srunner, s21_memset_suite());
+    srunner_add_suite (srunner, s21_strchr_suite());
 
     srunner_add_suite (srunner, s21_strlen_suite());
 

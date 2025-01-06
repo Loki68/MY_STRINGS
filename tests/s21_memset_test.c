@@ -1,16 +1,5 @@
 #include "s21_check_string.h" 
 
-
-
-void setup(void){
-    char s21_str[]="Hello world!";
-    
-
-    char str[]="Hello world!";
-    
-}
-
-
 //нуль копируемых символов
 //правильный размер строк
 //символ раз
