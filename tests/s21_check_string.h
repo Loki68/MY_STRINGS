@@ -15,6 +15,7 @@
 #define T_STR_1 "Hello world!"
 #define T_STR_2 "Hello world"
 #define T_STR_SHORT "Hello"
+#define T_S_W_ZERO "bytecode\0why"
 #define T_STR_A_SHORT "KHA..An!!11"
 #define T_EMPTY ""
 //символы для функций поиска символов:
@@ -25,6 +26,7 @@
 //индексы для функций, принимающих в качестве аргумента число элементов строки
 //тоже шаблонноЖ
 //находящийся внутри строки, за ее пределами и отрицательный
+#define ZERO_NUMBER 0
 #define NUMBER 10
 #define OVERFLOW_NUMBER 37
 #define NEGATIVE_NUMBER -5
@@ -35,5 +37,6 @@
 Suite *s21_memchr_suite(void);
 Suite *s21_memcmp_suite(void);
 Suite *s21_memcpy_suite(void);
+Suite *s21_memset_suite(void);
 
 Suite *s21_strlen_suite(void);

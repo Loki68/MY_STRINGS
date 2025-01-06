@@ -1,9 +1,15 @@
 #include "s21_check_string.h" 
 
+
 char s21_str[]="Hello world!";
+char s21_str_1[]="there is no power as no knowledge";
+
 char str[]="Hello world!";
-//одинаковые строки
-//правильный размер
+char str_1[]="there is no power as no knowledge";
+
+
+//одинаковые строки на вход
+//правильный размер. остальное - неопределенное поведение
 START_TEST (test_s21_memcpy_1)
 {
   char* s21_memcpy_result=NULL;
@@ -16,31 +22,70 @@ START_TEST (test_s21_memcpy_1)
 }
 END_TEST
 
+//второй вариант строк
+START_TEST (test_s21_memcpy_2)
+{
+  char* s21_memcpy_result=NULL;
+  char* memcpy_result=NULL;
+
+  s21_memcpy_result=(char*)s21_memcpy(s21_str_1,T_STR_1,NUMBER);
+  memcpy_result=(char*)memcpy(str_1,T_STR_1,NUMBER);
+  
+  ck_assert_str_eq(s21_memcpy_result,memcpy_result);
+}
+END_TEST
+
+//с нулем в строке
+START_TEST (test_s21_memcpy_3)
+{
+  char* s21_memcpy_result=NULL;
+  char* memcpy_result=NULL;
+
+  s21_memcpy_result=(char*)s21_memcpy(s21_str_1,T_S_W_ZERO,NUMBER);
+  memcpy_result=(char*)memcpy(str_1,T_S_W_ZERO,NUMBER);
+  
+  ck_assert_str_eq(s21_memcpy_result,memcpy_result);
+}
+END_TEST
+
+//нуль копируемых символов
+START_TEST (test_s21_memcpy_4)
+{
+  char* s21_memcpy_result=NULL;
+  char* memcpy_result=NULL;
+
+  s21_memcpy_result=(char*)s21_memcpy(s21_str_1,T_STR_A_SHORT,ZERO_NUMBER);
+  memcpy_result=(char*)memcpy(str_1,T_STR_A_SHORT,ZERO_NUMBER);
+  
+  ck_assert_str_eq(s21_memcpy_result,memcpy_result);
+}
+END_TEST
+//
+
 Suite *s21_memcpy_suite(void){
   Suite *suite;
   TCase *tc_s21_memcpy;
-  TCase *tc_s21_memcpy_limits;
 
   suite=suite_create("s21_memcpy");
 
   tc_s21_memcpy=tcase_create("Core");
 
+//одинаковые строки на вход
+////правильный размер. остальное - неопределенное поведение
   tcase_add_test(tc_s21_memcpy, test_s21_memcpy_1);
   suite_add_tcase(suite, tc_s21_memcpy);
 
-//   tc_s21_memcmp_limits=tcase_create("Limits");
+////второй вариант строк
+  tcase_add_test(tc_s21_memcpy, test_s21_memcpy_2);
+  suite_add_tcase(suite, tc_s21_memcpy);
 
-//   tcase_add_test(tc_s21_memcmp_limits,test_s21_memcmp_2);
-//   suite_add_tcase(suite, tc_s21_memcmp_limits);
+////с нулем в строке
+  tcase_add_test(tc_s21_memcpy, test_s21_memcpy_3);
+  suite_add_tcase(suite, tc_s21_memcpy);
 
-//   tcase_add_test(tc_s21_memcmp_limits,test_s21_memcmp_4);
-//   suite_add_tcase(suite, tc_s21_memcmp_limits);
-
-//   tcase_add_test(tc_s21_memcmp_limits,test_s21_memcmp_5);
-//   suite_add_tcase(suite, tc_s21_memcmp_limits);
-
-//   tcase_add_test(tc_s21_memcmp_limits,test_s21_memcmp_6);
-//   suite_add_tcase(suite, tc_s21_memcmp_limits);
+////нуль копируемых символов
+  tcase_add_test(tc_s21_memcpy, test_s21_memcpy_4);
+  suite_add_tcase(suite, tc_s21_memcpy);
 
   return suite;
 }

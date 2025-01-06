@@ -11,6 +11,7 @@ int main(void){
     srunner = srunner_create(s21_memchr_suite());
     srunner_add_suite (srunner, s21_memcmp_suite());
     srunner_add_suite (srunner, s21_memcpy_suite());
+    srunner_add_suite (srunner, s21_memset_suite());
 
     srunner_add_suite (srunner, s21_strlen_suite());
 

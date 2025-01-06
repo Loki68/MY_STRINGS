@@ -10,7 +10,7 @@ void *s21_memchr(const void *str, int c, s21_size_t n) {
   s21_size_t index = 0;
 
   const unsigned char character = (const unsigned char)c;
-  string=(const char*)str;
+  string=(char*)str;
   count = (s21_size_t)(unsigned int)n;
 
   for (; index < count && string[index]!= character;
