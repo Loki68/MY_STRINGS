@@ -15,7 +15,7 @@ START_TEST (test_s21_strncat_1)
 }
 END_TEST
 
-//negative number
+//нулевое количество символов
 START_TEST (test_s21_strncat_2)
 {
   char s21_str_1[OVERFLOW_NUMBER]="there is no power as no knowledge";
@@ -23,14 +23,14 @@ START_TEST (test_s21_strncat_2)
   char* s21_strncat_result=NULL;
   char* strncat_result=NULL;
 
-  s21_strncat_result=(char*)s21_strncat(s21_str_1,T_STR_SHORT,NEGATIVE_NUMBER);
-  strncat_result=(char*)strncat(str_1,T_STR_SHORT,NEGATIVE_NUMBER);
+  s21_strncat_result=(char*)s21_strncat(s21_str_1,T_STR_SHORT,ZERO_NUMBER);
+  strncat_result=(char*)strncat(str_1,T_STR_SHORT,ZERO_NUMBER);
   
   ck_assert_str_eq(s21_strncat_result,strncat_result);
 }
 END_TEST
 
-//overflow number
+//другая дополнительная строка
 START_TEST (test_s21_strncat_3)
 {
   char s21_str_1[OVERFLOW_NUMBER]="there is no power as no knowledge";
@@ -38,8 +38,23 @@ START_TEST (test_s21_strncat_3)
   char* s21_strncat_result=NULL;
   char* strncat_result=NULL;
 
-  s21_strncat_result=(char*)s21_strncat(s21_str_1,T_STR_SHORT,OVERFLOW_NUMBER);
-  strncat_result=(char*)strncat(str_1,T_STR_SHORT,OVERFLOW_NUMBER);
+  s21_strncat_result=(char*)s21_strncat(s21_str_1,T_STR_A_SHORT,NUMBER);
+  strncat_result=(char*)strncat(str_1,T_STR_A_SHORT,NUMBER);
+  
+  ck_assert_str_eq(s21_strncat_result,strncat_result);
+}
+END_TEST
+
+//другая строка
+START_TEST (test_s21_strncat_4)
+{
+  char s21_str_1[OVERFLOW_NUMBER/2]="Hello world!";
+  char str_1[OVERFLOW_NUMBER/2]="Hello world!";
+  char* s21_strncat_result=NULL;
+  char* strncat_result=NULL;
+
+  s21_strncat_result=(char*)s21_strncat(s21_str_1,T_STR_SHORT,NUMBER);
+  strncat_result=(char*)strncat(str_1,T_STR_SHORT,NUMBER);
   
   ck_assert_str_eq(s21_strncat_result,strncat_result);
 }
@@ -58,12 +73,16 @@ Suite *s21_strncat_suite(void){
   tcase_add_test(tc_s21_strncat, test_s21_strncat_1);
   suite_add_tcase(suite, tc_s21_strncat);
 
-////размер < 0
+////правильный размер.
   tcase_add_test(tc_s21_strncat, test_s21_strncat_2);
   suite_add_tcase(suite, tc_s21_strncat);
 
-////больший размер
+//другая дополнительная строка
   tcase_add_test(tc_s21_strncat, test_s21_strncat_3);
+  suite_add_tcase(suite, tc_s21_strncat);
+
+//другая строка
+  tcase_add_test(tc_s21_strncat, test_s21_strncat_4);
   suite_add_tcase(suite, tc_s21_strncat);
 
   return suite;
