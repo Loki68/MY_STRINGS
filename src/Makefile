@@ -70,7 +70,7 @@ GCOV_REPORT_DIR = ../gcov_report
 BRANCHES = --rc lcov_branch_coverage=1
 #конец настроек для lcov
 
-all : s21_string.a test gcov_report
+all : format_project s21_string.a test gcov_report
 
 #Стадия сборки библиотеки - s21_string.a
 # Индексируем архив с помощью ranlib
@@ -205,8 +205,10 @@ clean :
 	rm -rf $(GCOV_RESULT) $(GCOV_REPORT_DIR)
 #конец стадии clean
 
-format_project:
+scan_project_on_format:
 	clang-format -n *.c *.h $(TESTS_DIR)/*.c $(TESTS_DIR)/*.h
+
+format_project:
 	clang-format -i *.c *.h $(TESTS_DIR)/*.c $(TESTS_DIR)/*.h
 
 #Стадия пересборки
