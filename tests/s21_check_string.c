@@ -7,7 +7,10 @@
 // memset check overflow count
 // strchr good
 // strlen good
-// strncat
+// strncat good
+// strncmp good
+// strncpy good
+// strpbrk good
 int main(void) {
   int number_failed = 0;
   SRunner *srunner = NULL;
@@ -21,6 +24,9 @@ int main(void) {
   srunner_add_suite(srunner, s21_strlen_suite());
   srunner_add_suite(srunner, s21_strncmp_suite());
   srunner_add_suite(srunner, s21_strncpy_suite());
+  srunner_add_suite(srunner,
+                    s21_strpbrk_suite()); //собирать с -Wdiscarded-qualifiers
+                                          //или удалить пустые тесты
 
   srunner_run_all(srunner, CK_NORMAL);
   number_failed = srunner_ntests_failed(srunner);

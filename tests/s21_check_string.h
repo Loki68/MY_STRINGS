@@ -19,6 +19,7 @@
 #define T_S_W_ZERO "bytecode\0why"
 #define T_STR_A_SHORT "KHA..An!!11"
 #define T_EMPTY ""
+#define T_NO_SYMB "GEn_5"
 //символы для функций поиска символов:
 //существующий в строке, нулевой и не существующий
 #define EXIST_CH 'w'
@@ -46,3 +47,4 @@ Suite *s21_strlen_suite(void);
 Suite *s21_strncat_suite(void);
 Suite *s21_strncmp_suite(void);
 Suite *s21_strncpy_suite(void);
+Suite *s21_strpbrk_suite(void);
