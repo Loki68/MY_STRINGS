@@ -25,7 +25,7 @@ START_TEST(test_s21_strpbrk_2) {
   char *strpbrk_result = NULL;
 
   s21_strpbrk_result = s21_strpbrk(T21_STR_1, T_EMPTY);
-  strpbrk_result = strpbrk(T21_STR_1, T_EMPTY);
+  strpbrk_result = (char *)strpbrk(T21_STR_1, T_EMPTY);
 
   ck_assert_ptr_eq(s21_strpbrk_result, strpbrk_result);
 }

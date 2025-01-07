@@ -1,5 +1,4 @@
 #include "s21_check_string.h"
-#include <stdio.h>
 
 //правильная строка
 //  T21_STR_1 "Hello world!"
@@ -40,7 +39,6 @@ START_TEST(test_s21_strstr_3) {
 
   s21_strstr_result = s21_strstr(T21_STR_1, T_STR_END);
   strstr_result = strstr(T21_STR_1, T_STR_END);
-  printf("s21 : %p, : %p\n", s21_strstr_result, strstr_result);
 
   ck_assert_ptr_eq(s21_strstr_result, strstr_result);
 }

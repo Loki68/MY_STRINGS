@@ -3,17 +3,21 @@
 char *s21_strstr(const char *haystack, const char *needle) {
 
   char *result = S21_NULL;
+  char *dest = S21_NULL;
+  char *src = S21_NULL;
   s21_size_t length_needle = 0;
 
-  length_needle = s21_strlen(needle);
+  dest = (char *)haystack;
+  src = (char *)needle;
+  length_needle = s21_strlen(src);
 
   if (length_needle) {
-    for (s21_size_t index = 0; haystack[index] && !result; index++)
-      if (haystack[index] == needle[0])
-        if (!s21_strncmp(&haystack[index], needle, length_needle))
-          result = &haystack[index];
+    for (long index = 0; dest[index] && !result; index++)
+      if (dest[index] == src[0])
+        if (!s21_strncmp(&dest[index], src, length_needle))
+          result = &dest[index];
   } else
-    result = haystack;
+    result = dest;
 
   return result;
 }
