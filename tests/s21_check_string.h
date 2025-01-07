@@ -16,6 +16,7 @@
 #define T_STR_1 "Hello world!"
 #define T_STR_2 "Hello world"
 #define T_STR_SHORT "Hello"
+#define T_STR_END "world"
 #define T_S_W_ZERO "bytecode\0why"
 #define T_STR_A_SHORT "KHA..An!!11"
 #define T_EMPTY ""
@@ -48,3 +49,4 @@ Suite *s21_strncat_suite(void);
 Suite *s21_strncmp_suite(void);
 Suite *s21_strncpy_suite(void);
 Suite *s21_strpbrk_suite(void);
+Suite *s21_strstr_suite(void);

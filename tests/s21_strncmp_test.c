@@ -1,6 +1,9 @@
 #include "s21_check_string.h"
 
 //первая строка длиннее второй
+// T21_STR_1 "Hello world!"
+// T_STR_SHORT "Hello"
+// NUMBER 10
 START_TEST(test_s21_strncmp_1) {
   int s21_strncmp_result = 0;
   int strncmp_result = 0;
