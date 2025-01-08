@@ -31,7 +31,9 @@ int s21_sprintf(char *str, const char *format, ...){
     s21_size_t fmt_size=0;
     s21_size_t index=0;
     s21_size_t text_start_index=0;
-    s21_size_t text_length=0;
+    //s21_size_t text_length=0;
+
+    printf("%s",str);
 
     fmt_size=s21_strlen(format);
 
@@ -41,7 +43,7 @@ int s21_sprintf(char *str, const char *format, ...){
 
         if(format[index]=='%'){
             if(index || (format[index+1]=='%')){
-                text_length=index-text_start_index;
+                //text_length=index-text_start_index;
                 //s21_sprintf_handle_text(format,text_start_index,text_length,current_token);
                 tokens_count++;
                 current_token=&tokens[tokens_count];

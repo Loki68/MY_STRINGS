@@ -9,10 +9,12 @@
 // strlen good
 // strncat good
 // strncmp good
-// strncpy - собирается с флагами -Wstringop-truncation -Wdiscarded-qualifiers
-// или удалить пустые тесты и больше тестов!!.. strpbrk good - собирать с
-// -Wdiscarded-qualifiers или удалить strstr good - сибирать с
-// -Wdiscarded-qualifiers пустые тесты и больше тестов!!..
+// strncpy good
+// strpbrk finished
+// strrchr good
+
+// strstr good
+// strcspn finished
 
 int main(void) {
   int number_failed = 0;

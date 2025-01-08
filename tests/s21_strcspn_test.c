@@ -5,7 +5,7 @@
 //строка для поиска символов которых нет в строке
 // char *tk = ",.!?";
 START_TEST(test_s21_strcspn_1) {
-  char str[] = "there is no power as no knowledge";
+  char *str = "there is no power as no knowledge";
   char *tk = ",.!?";
   size_t s21_strcspn_result = 0;
   size_t strcspn_result = 0;
@@ -22,7 +22,7 @@ END_TEST
 //строка для поиска символов с символом с которого начинается строка
 // char *tk = "t,.!?";
 START_TEST(test_s21_strcspn_2) {
-  char str[] = "there is no power as no knowledge";
+  char *str = "there is no power as no knowledge";
   char *tk = "t,.!?";
   size_t s21_strcspn_result = 0;
   size_t strcspn_result = 0;
@@ -39,7 +39,7 @@ END_TEST
 //строка для поиска символов с существующим символом внутри строки
 // char *tk = ",.o!?";
 START_TEST(test_s21_strcspn_3) {
-  char str[] = "there is no power as no knowledge";
+  char *str = "there is no power as no knowledge";
   char *tk = ",.o!?";
   size_t s21_strcspn_result = 0;
   size_t strcspn_result = 0;
@@ -56,7 +56,7 @@ END_TEST
 //строка для поиска символов с существующим символом внутри строки
 // char *tk = ",.t!?o"
 START_TEST(test_s21_strcspn_4) {
-  char str[] = "there is no power as no knowledge";
+  char *str = "there is no power as no knowledge";
   char *tk = ",.t!?o";
   size_t s21_strcspn_result = 0;
   size_t strcspn_result = 0;
@@ -73,7 +73,7 @@ END_TEST
 //пустая строка символов
 // char *tk = ""
 START_TEST(test_s21_strcspn_5) {
-  char str[] = "there is no power as no knowledge";
+  char *str = "there is no power as no knowledge";
   char *tk = "";
   size_t s21_strcspn_result = 0;
   size_t strcspn_result = 0;
@@ -90,7 +90,7 @@ END_TEST
 //строка для поиска символов с существующим символом внутри строки
 // char *tk = ",.t!?o"
 START_TEST(test_s21_strcspn_6) {
-  char str[] = "";
+  char *str = "";
   char *tk = ",.t!?o";
   size_t s21_strcspn_result = 0;
   size_t strcspn_result = 0;
@@ -107,7 +107,7 @@ END_TEST
 //пустая строка символов
 // char *tk = ""
 START_TEST(test_s21_strcspn_7) {
-  char str[] = "";
+  char *str = "";
   char *tk = "";
   size_t s21_strcspn_result = 0;
   size_t strcspn_result = 0;
