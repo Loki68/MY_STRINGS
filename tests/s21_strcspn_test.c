@@ -1,7 +1,5 @@
 #include "s21_check_string.h"
 
-#include <stdio.h>
-
 //исходная строка
 // char *str = "there is no power as no knowledge";
 //строка для поиска символов которых нет в строке
@@ -14,8 +12,6 @@ START_TEST(test_s21_strcspn_1) {
 
   s21_strcspn_result = s21_strcspn(str, tk);
   strcspn_result = strcspn(str, tk);
-
-  printf("c = %ld s21 = %ld\n", strcspn_result, s21_strcspn_result);
 
   ck_assert(s21_strcspn_result == strcspn_result);
 }
@@ -34,8 +30,6 @@ START_TEST(test_s21_strcspn_2) {
   s21_strcspn_result = s21_strcspn(str, tk);
   strcspn_result = strcspn(str, tk);
 
-  printf("c = %ld s21 = %ld\n", strcspn_result, s21_strcspn_result);
-
   ck_assert(s21_strcspn_result == strcspn_result);
 }
 END_TEST
@@ -53,8 +47,6 @@ START_TEST(test_s21_strcspn_3) {
   s21_strcspn_result = s21_strcspn(str, tk);
   strcspn_result = strcspn(str, tk);
 
-  printf("c = %ld s21 = %ld\n", strcspn_result, s21_strcspn_result);
-
   ck_assert(s21_strcspn_result == strcspn_result);
 }
 END_TEST
@@ -71,8 +63,6 @@ START_TEST(test_s21_strcspn_4) {
 
   s21_strcspn_result = s21_strcspn(str, tk);
   strcspn_result = strcspn(str, tk);
-
-  printf("c = %ld s21 = %ld\n", strcspn_result, s21_strcspn_result);
 
   ck_assert(s21_strcspn_result == strcspn_result);
 }
