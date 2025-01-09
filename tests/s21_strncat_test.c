@@ -105,6 +105,7 @@ START_TEST(test_s21_strncat_4) {
 }
 END_TEST
 
+//проверить на отрицательные числа для n
 // const string or null ptr => sega
 Suite *s21_strncat_suite(void) {
   Suite *suite;

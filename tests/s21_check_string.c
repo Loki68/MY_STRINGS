@@ -5,10 +5,9 @@
 // memcmp good
 // memcpy good
 // memset check overflow count
-// strchr good
 
-// strlen good
-
+// strchr finished
+// strlen finished
 // strncat finished
 // strncmp finished
 // strncpy finished

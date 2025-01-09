@@ -1,6 +1,5 @@
 #include "s21_string.h"
 
-// returns S21_NULL
 char *s21_strchr(const char *str, int c) {
   char *string = S21_NULL;
 
