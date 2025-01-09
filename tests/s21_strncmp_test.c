@@ -1,87 +1,119 @@
 #include "s21_check_string.h"
 
-//первая строка длиннее второй
-// T21_STR_1 "Hello world!"
-// T_STR_SHORT "Hello"
-// NUMBER 10
+//  char* str1 = "Hello world!";
+//  char* str2 = "Hello";
+//  s21_size_t n = 10;
 START_TEST(test_s21_strncmp_1) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello";
+  s21_size_t n = 10;
   int s21_strncmp_result = 0;
   int strncmp_result = 0;
 
-  s21_strncmp_result = s21_strncmp(T21_STR_1, T_STR_SHORT, NUMBER);
-  strncmp_result = strncmp(T21_STR_1, T_STR_SHORT, NUMBER);
+  s21_strncmp_result = s21_strncmp(str1, str2, n);
+  strncmp_result = strncmp(str1, str2, n);
 
   ck_assert_int_eq(s21_strncmp_result, strncmp_result);
 }
 END_TEST
 
-//первая строка короче второй
+//  char* str1 = "Hello";
+//  char* str2 = "Hello world!";
+//  s21_size_t n = 10;
 START_TEST(test_s21_strncmp_2) {
+  char *str1 = "Hello";
+  char *str2 = "Hello world!";
+  s21_size_t n = 10;
   int s21_strncmp_result = 0;
   int strncmp_result = 0;
 
-  s21_strncmp_result = s21_strncmp(T_STR_SHORT, T21_STR_1, NUMBER);
-  strncmp_result = strncmp(T_STR_SHORT, T21_STR_1, NUMBER);
+  s21_strncmp_result = s21_strncmp(str1, str2, n);
+  strncmp_result = strncmp(str1, str2, n);
 
   ck_assert_int_eq(s21_strncmp_result, strncmp_result);
 }
 END_TEST
 
-//равные строки
+//  char* str1 = "Hello world!";
+//  char* str2 = "Hello world!";
+//  s21_size_t n = 10;
 START_TEST(test_s21_strncmp_3) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello world!";
+  s21_size_t n = 10;
   int s21_strncmp_result = 0;
   int strncmp_result = 0;
 
-  s21_strncmp_result = s21_strncmp(T21_STR_1, T21_STR_1, NUMBER);
-  strncmp_result = strncmp(T21_STR_1, T21_STR_1, NUMBER);
+  s21_strncmp_result = s21_strncmp(str1, str2, n);
+  strncmp_result = strncmp(str1, str2, n);
 
   ck_assert_int_eq(s21_strncmp_result, strncmp_result);
 }
 END_TEST
 
-//разые строки
+//  char* str1 = "Hello world!";
+//  char* str2 = "KHA..An!!11";
+//  s21_size_t n = 10;
 START_TEST(test_s21_strncmp_4) {
+  char *str1 = "Hello world!";
+  char *str2 = "KHA..An!!11";
+  s21_size_t n = 10;
   int s21_strncmp_result = 0;
   int strncmp_result = 0;
 
-  s21_strncmp_result = s21_strncmp(T21_STR_1, T_STR_A_SHORT, NUMBER);
-  strncmp_result = strncmp(T21_STR_1, T_STR_A_SHORT, NUMBER);
+  s21_strncmp_result = s21_strncmp(str1, str2, n);
+  strncmp_result = strncmp(str1, str2, n);
 
   ck_assert_int_eq(s21_strncmp_result, strncmp_result);
 }
 END_TEST
 
-//равные строки больший размер
+//  char* str1 = "Hello world!";
+//  char* str2 = "Hello world!";
+//  s21_size_t n = 50;
 START_TEST(test_s21_strncmp_5) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello world!";
+  s21_size_t n = 50;
   int s21_strncmp_result = 0;
   int strncmp_result = 0;
 
-  s21_strncmp_result = s21_strncmp(T21_STR_1, T21_STR_1, OVERFLOW_NUMBER);
-  strncmp_result = strncmp(T21_STR_1, T21_STR_1, OVERFLOW_NUMBER);
+  s21_strncmp_result = s21_strncmp(str1, str2, n);
+  strncmp_result = strncmp(str1, str2, n);
 
   ck_assert_int_eq(s21_strncmp_result, strncmp_result);
 }
 END_TEST
 
-//нулевой размер
+//  char* str1 = "Hello world!";
+//  char* str2 = "Hello world!";
+//  s21_size_t n = 0;
 START_TEST(test_s21_strncmp_6) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello world!";
+  s21_size_t n = 0;
   int s21_strncmp_result = 0;
   int strncmp_result = 0;
 
-  s21_strncmp_result = s21_strncmp(T21_STR_1, T21_STR_1, ZERO_NUMBER);
-  strncmp_result = strncmp(T21_STR_1, T21_STR_1, ZERO_NUMBER);
+  s21_strncmp_result = s21_strncmp(str1, str2, n);
+  strncmp_result = strncmp(str1, str2, n);
 
   ck_assert_int_eq(s21_strncmp_result, strncmp_result);
 }
 END_TEST
 
-//разные строки больший размер
+//  char* str1 = "Hello world!";
+//  char* str2 = "KHA..An!!11";
+//  s21_size_t n = 50;
 START_TEST(test_s21_strncmp_7) {
+  char *str1 = "Hello world!";
+  char *str2 = "KHA..An!!11";
+  s21_size_t n = 50;
   int s21_strncmp_result = 0;
   int strncmp_result = 0;
 
-  s21_strncmp_result = s21_strncmp(T21_STR_1, T_STR_A_SHORT, OVERFLOW_NUMBER);
-  strncmp_result = strncmp(T21_STR_1, T_STR_A_SHORT, OVERFLOW_NUMBER);
+  s21_strncmp_result = s21_strncmp(str1, str2, n);
+  strncmp_result = strncmp(str1, str2, n);
 
   ck_assert_int_eq(s21_strncmp_result, strncmp_result);
 }
@@ -96,31 +128,45 @@ Suite *s21_strncmp_suite(void) {
 
   tc_s21_strncmp = tcase_create("S21_strncmp");
 
-  ////первая строка длиннее второй
+  //  char* str1 = "Hello world!";
+  //  char* str2 = "Hello";
+  //  s21_size_t n = 10;
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_1);
   suite_add_tcase(suite, tc_s21_strncmp);
 
-  ////первая строка короче второй
+  //  char* str1 = "Hello";
+  //  char* str2 = "Hello world!";
+  //  s21_size_t n = 10;
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_2);
   suite_add_tcase(suite, tc_s21_strncmp);
 
-  //равные строки
+  //  char* str1 = "Hello world!";
+  //  char* str2 = "Hello world!";
+  //  s21_size_t n = 10;
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_3);
   suite_add_tcase(suite, tc_s21_strncmp);
 
-  //разые строки
+  //  char* str1 = "Hello world!";
+  //  char* str2 = "KHA..An!!11";
+  //  s21_size_t n = 10;
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_4);
   suite_add_tcase(suite, tc_s21_strncmp);
 
-  //равные строки больший размер
+  //  char* str1 = "Hello world!";
+  //  char* str2 = "Hello world!";
+  //  s21_size_t n = 50;
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_5);
   suite_add_tcase(suite, tc_s21_strncmp);
 
-  //нулевой размер
+  //  char* str1 = "Hello world!";
+  //  char* str2 = "Hello world!";
+  //  s21_size_t n = 0;
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_6);
   suite_add_tcase(suite, tc_s21_strncmp);
 
-  //разные строки больший размер
+  //  char* str1 = "Hello world!";
+  //  char* str2 = "KHA..An!!11";
+  //  s21_size_t n = 50;
   tcase_add_test(tc_s21_strncmp, test_s21_strncmp_7);
   suite_add_tcase(suite, tc_s21_strncmp);
 

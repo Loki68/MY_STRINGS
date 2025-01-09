@@ -1,56 +1,105 @@
 #include "s21_check_string.h"
 
-// correct number
+void initialize_string(char *dest, const char *dest_filler, int filler_size) {
+  strncpy(dest, dest_filler, filler_size);
+}
+
+//  char* dest_filler = "there is no power as no knowledge";
+//  int dest_size = 50;
+//  char dest_s21[dest_size];
+//  char dest[dest_size];
+//  char* src = "KHA..An!!11";
+//  size_t n = 10;
 START_TEST(test_s21_strncat_1) {
-  char s21_str_1[OVERFLOW_NUMBER] = "there is no power as no knowledge";
-  char str_1[OVERFLOW_NUMBER] = "there is no power as no knowledge";
+  char *dest_filler = "there is no power as no knowledge";
+  int dest_size = 50;
+  char dest_s21[dest_size];
+  char dest[dest_size];
+  char *src = "KHA..An!!11";
+  size_t n = 10;
   char *s21_strncat_result = NULL;
   char *strncat_result = NULL;
+  initialize_string(dest_s21, dest_filler, dest_size);
+  initialize_string(dest, dest_filler, dest_size);
 
-  s21_strncat_result = (char *)s21_strncat(s21_str_1, T_STR_A_SHORT, NUMBER);
-  strncat_result = (char *)strncat(str_1, T_STR_A_SHORT, NUMBER);
+  s21_strncat_result = s21_strncat(dest_s21, src, n);
+  strncat_result = strncat(dest, src, n);
 
   ck_assert_str_eq(s21_strncat_result, strncat_result);
 }
 END_TEST
 
-//нулевое количество символов
+//  char* dest_filler = "there is no power as no knowledge";
+//  int dest_size = 50;
+//  char dest_s21[dest_size];
+//  char dest[dest_size];
+//  char* src = "Hello";
+//  size_t n = 0;
 START_TEST(test_s21_strncat_2) {
-  char s21_str_1[OVERFLOW_NUMBER] = "there is no power as no knowledge";
-  char str_1[OVERFLOW_NUMBER] = "there is no power as no knowledge";
+  char *dest_filler = "there is no power as no knowledge";
+  int dest_size = 50;
+  char dest_s21[dest_size];
+  char dest[dest_size];
+  char *src = "Hello";
+  size_t n = 0;
   char *s21_strncat_result = NULL;
   char *strncat_result = NULL;
+  initialize_string(dest_s21, dest_filler, dest_size);
+  initialize_string(dest, dest_filler, dest_size);
 
-  s21_strncat_result = (char *)s21_strncat(s21_str_1, T_STR_SHORT, ZERO_NUMBER);
-  strncat_result = (char *)strncat(str_1, T_STR_SHORT, ZERO_NUMBER);
+  s21_strncat_result = s21_strncat(dest_s21, src, n);
+  strncat_result = strncat(dest, src, n);
 
   ck_assert_str_eq(s21_strncat_result, strncat_result);
 }
 END_TEST
 
-//другая дополнительная строка
+//  char* dest_filler = "there is no power as no knowledge";
+//  int dest_size = 50;
+//  char dest_s21[dest_size];
+//  char dest[dest_size];
+//  char* src = "Hello";
+//  size_t n = 10;
 START_TEST(test_s21_strncat_3) {
-  char s21_str_1[OVERFLOW_NUMBER] = "there is no power as no knowledge";
-  char str_1[OVERFLOW_NUMBER] = "there is no power as no knowledge";
+  char *dest_filler = "there is no power as no knowledge";
+  int dest_size = 50;
+  char dest_s21[dest_size];
+  char dest[dest_size];
+  char *src = "Hello";
+  size_t n = 10;
   char *s21_strncat_result = NULL;
   char *strncat_result = NULL;
+  initialize_string(dest_s21, dest_filler, dest_size);
+  initialize_string(dest, dest_filler, dest_size);
 
-  s21_strncat_result = (char *)s21_strncat(s21_str_1, T_STR_A_SHORT, NUMBER);
-  strncat_result = (char *)strncat(str_1, T_STR_A_SHORT, NUMBER);
+  s21_strncat_result = s21_strncat(dest_s21, src, n);
+  strncat_result = strncat(dest, src, n);
 
   ck_assert_str_eq(s21_strncat_result, strncat_result);
 }
 END_TEST
 
-//другая строка
+//  char* dest_filler = "Hello world!";;
+//  int dest_size = 50;
+//  char dest_s21[dest_size];
+//  char dest[dest_size];
+//  char* src = "KHA..An!!11";
+//  size_t n = 20;
 START_TEST(test_s21_strncat_4) {
-  char s21_str_1[OVERFLOW_NUMBER / 2] = "Hello world!";
-  char str_1[OVERFLOW_NUMBER / 2] = "Hello world!";
+  char *dest_filler = "Hello world!";
+  ;
+  int dest_size = 50;
+  char dest_s21[dest_size];
+  char dest[dest_size];
+  char *src = "KHA..An!!11";
+  size_t n = 20;
   char *s21_strncat_result = NULL;
   char *strncat_result = NULL;
+  initialize_string(dest_s21, dest_filler, dest_size);
+  initialize_string(dest, dest_filler, dest_size);
 
-  s21_strncat_result = (char *)s21_strncat(s21_str_1, T_STR_SHORT, NUMBER);
-  strncat_result = (char *)strncat(str_1, T_STR_SHORT, NUMBER);
+  s21_strncat_result = s21_strncat(dest_s21, src, n);
+  strncat_result = strncat(dest, src, n);
 
   ck_assert_str_eq(s21_strncat_result, strncat_result);
 }
@@ -65,19 +114,39 @@ Suite *s21_strncat_suite(void) {
 
   tc_s21_strncat = tcase_create("S21_strncat");
 
-  ////правильный размер. остальное - неопределенное поведение
+  //  char* dest_filler = "there is no power as no knowledge";
+  //  int dest_size = 50;
+  //  char dest_s21[dest_size];
+  //  char dest[dest_size];
+  //  char* src = "KHA..An!!11";
+  //  size_t n = 10;
   tcase_add_test(tc_s21_strncat, test_s21_strncat_1);
   suite_add_tcase(suite, tc_s21_strncat);
 
-  ////правильный размер.
+  //  char* dest_filler = "there is no power as no knowledge";
+  //  int dest_size = 50;
+  //  char dest_s21[dest_size];
+  //  char dest[dest_size];
+  //  char* src = "Hello";
+  //  size_t n = 0;
   tcase_add_test(tc_s21_strncat, test_s21_strncat_2);
   suite_add_tcase(suite, tc_s21_strncat);
 
-  //другая дополнительная строка
+  //  char* dest_filler = "there is no power as no knowledge";
+  //  int dest_size = 50;
+  //  char dest_s21[dest_size];
+  //  char dest[dest_size];
+  //  char* src = "Hello";
+  //  size_t n = 10;
   tcase_add_test(tc_s21_strncat, test_s21_strncat_3);
   suite_add_tcase(suite, tc_s21_strncat);
 
-  //другая строка
+  //  char* dest_filler = "Hello world!";;
+  //  int dest_size = 50;
+  //  char dest_s21[dest_size];
+  //  char dest[dest_size];
+  //  char* src = "KHA..An!!11";
+  //  size_t n = 20;
   tcase_add_test(tc_s21_strncat, test_s21_strncat_4);
   suite_add_tcase(suite, tc_s21_strncat);
 

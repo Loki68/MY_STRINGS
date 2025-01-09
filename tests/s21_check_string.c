@@ -6,14 +6,15 @@
 // memcpy good
 // memset check overflow count
 // strchr good
-// strlen good
-// strncat good
-// strncmp good
-// strncpy good
-// strpbrk finished
-// strrchr good
 
-// strstr good
+// strlen good
+
+// strncat finished
+// strncmp finished
+// strncpy finished
+// strpbrk finished
+// strrchr finished
+// strstr finished
 // strcspn finished
 
 int main(void) {

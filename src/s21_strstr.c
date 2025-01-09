@@ -12,7 +12,7 @@ char *s21_strstr(const char *haystack, const char *needle) {
   length_needle = s21_strlen(src);
 
   if (length_needle) {
-    for (long index = 0; dest[index] && !result; index++)
+    for (int index = 0; dest[index] && !result; index++)
       if (dest[index] == src[0])
         if (!s21_strncmp(&dest[index], src, length_needle))
           result = &dest[index];

@@ -1,59 +1,78 @@
 #include "s21_check_string.h"
 
-//строка с нулем
+//  char dest_s21[] = "Hello world!";
+//  char dest[] = "Hello world!";
+//  char* src = "KHA..An!!11";
+//  size_t n = 12;
 START_TEST(test_s21_strncpy_1) {
-  char s21_str[] = "Hello world!";
-  char str[] = "Hello world!";
-  size_t size = 12;
+  char dest_s21[] = "Hello world!";
+  char dest[] = "Hello world!";
+  char *src = "KHA..An!!11";
+  size_t n = 12;
   char *s21_strncpy_result = NULL;
   char *strncpy_result = NULL;
 
-  s21_strncpy_result = s21_strncpy(s21_str, T_STR_A_SHORT, size);
-  strncpy_result = strncpy(str, T_STR_A_SHORT, size);
+  s21_strncpy_result = s21_strncpy(dest_s21, src, n);
+  strncpy_result = strncpy(dest, src, n);
 
   ck_assert_str_eq(s21_strncpy_result, strncpy_result);
 }
 END_TEST
 
-//строка
+//  char dest_s21[] = "there is no power as no knowledge";
+//  char dest[] = "there is no power as no knowledge";
+//  char* src = "Hello";
+//  size_t n = 10;
 START_TEST(test_s21_strncpy_2) {
-  char s21_str[] = "there is no power as no knowledge";
-  char str[] = "there is no power as no knowledge";
+  char dest_s21[] = "there is no power as no knowledge";
+  char dest[] = "there is no power as no knowledge";
+  char *src = "Hello";
+  size_t n = 10;
   char *s21_strncpy_result = NULL;
   char *strncpy_result = NULL;
 
-  s21_strncpy_result = s21_strncpy(s21_str, T_STR_SHORT, NUMBER);
-  strncpy_result = strncpy(str, T_STR_SHORT, NUMBER);
+  s21_strncpy_result = s21_strncpy(dest_s21, src, n);
+  strncpy_result = strncpy(dest, src, n);
 
   ck_assert_str_eq(s21_strncpy_result, strncpy_result);
 }
 END_TEST
 
-// //закомментированное на линупсе собирается с флагами -Wstringop-truncation
-// //строка и ноль нужно копировать
-// START_TEST(test_s21_strncpy_3) {
-//   char s21_str[] = "there is no power as no knowledge";
-//   char str[] = "there is no power as no knowledge";
-//   char *s21_strncpy_result = NULL;
-//   // char *strncpy_result = NULL;
+//  char dest_s21[] = "there is no power as no knowledge";
+//  char dest[] = "there is no power as no knowledge";
+//  char* src = "Hello";
+//  size_t n = 0;
+START_TEST(test_s21_strncpy_3) {
+  char dest_s21[] = "there is no power as no knowledge";
+  char dest[] = "there is no power as no knowledge";
+  char *src = "Hello";
+  size_t n = 0;
 
-//   s21_strncpy_result = s21_strncpy(s21_str, T_STR_SHORT, ZERO_NUMBER);
-//   // strncpy_result =
-//   strncpy(str, T_STR_SHORT, ZERO_NUMBER);
-
-//   ck_assert_str_eq(s21_strncpy_result, str);
-// }
-// END_TEST
-
-//пустая строка
-START_TEST(test_s21_strncpy_4) {
-  char s21_str[] = "there is no power as no knowledge";
-  char str[] = "there is no power as no knowledge";
   char *s21_strncpy_result = NULL;
   char *strncpy_result = NULL;
 
-  s21_strncpy_result = s21_strncpy(s21_str, T_EMPTY, NUMBER);
-  strncpy_result = strncpy(str, T_EMPTY, NUMBER);
+  s21_strncpy_result = s21_strncpy(dest_s21, src, n);
+  strncpy_result = strncpy(dest, src, n);
+
+  ck_assert_str_eq(s21_strncpy_result, strncpy_result);
+}
+END_TEST
+
+//  char dest_s21[] = "there is no power as no knowledge";
+//  char dest[] = "there is no power as no knowledge";
+//  char* src = "";
+//  size_t n = 10;
+START_TEST(test_s21_strncpy_4) {
+  char dest_s21[] = "there is no power as no knowledge";
+  char dest[] = "there is no power as no knowledge";
+  char *src = "";
+  size_t n = 10;
+
+  char *s21_strncpy_result = NULL;
+  char *strncpy_result = NULL;
+
+  s21_strncpy_result = s21_strncpy(dest_s21, src, n);
+  strncpy_result = strncpy(dest, src, n);
 
   ck_assert_str_eq(s21_strncpy_result, strncpy_result);
 }
@@ -69,19 +88,31 @@ Suite *s21_strncpy_suite(void) {
 
   tc_s21_strncpy = tcase_create("S21_strncpy");
 
-  //строка с нулем
+  //  char dest_s21[] = "Hello world!";
+  //  char dest[] = "Hello world!";
+  //  char* src = "KHA..An!!11";
+  //  size_t n = 12;
   tcase_add_test(tc_s21_strncpy, test_s21_strncpy_1);
   suite_add_tcase(suite, tc_s21_strncpy);
 
-  //строка
+  //  char dest_s21[] = "there is no power as no knowledge";
+  //  char dest[] = "there is no power as no knowledge";
+  //  char* src = "Hello";
+  //  size_t n = 10;
   tcase_add_test(tc_s21_strncpy, test_s21_strncpy_2);
   suite_add_tcase(suite, tc_s21_strncpy);
 
-  // //строка и ноль нужно копировать
-  // tcase_add_test(tc_s21_strncpy, test_s21_strncpy_3);
-  // suite_add_tcase(suite, tc_s21_strncpy);
+  //  char dest_s21[] = "there is no power as no knowledge";
+  //  char dest[] = "there is no power as no knowledge";
+  //  char* src = "Hello";
+  //  size_t n = 0;
+  tcase_add_test(tc_s21_strncpy, test_s21_strncpy_3);
+  suite_add_tcase(suite, tc_s21_strncpy);
 
-  //пустая строка
+  //  char dest_s21[] = "there is no power as no knowledge";
+  //  char dest[] = "there is no power as no knowledge";
+  //  char* src = "";
+  //  size_t n = 10;
   tcase_add_test(tc_s21_strncpy, test_s21_strncpy_4);
   suite_add_tcase(suite, tc_s21_strncpy);
 
