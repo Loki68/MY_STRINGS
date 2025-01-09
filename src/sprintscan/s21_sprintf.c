@@ -2,161 +2,76 @@
 
 #include <stdio.h>
 
-typedef enum type{
-    text,
-    integer,
-    string
-}s21_token_type_t;
+typedef enum type { text, integer, string } TokenType_t;
 
-typedef struct token{
-    s21_token_type_t type;
-    //s21_size_t token_length;
-    char buffer[256];
-}s21_token_t;
+typedef struct token {
+  char token_string[512];
+  s21_size_t token_size;
+  TokenType_t token_type;
+} Token_t;
 
-// void s21_sprintf_handle_text(const char *string,s21_size_t start_index, s21_size_t text_length,s21_token_t *text_token);
-// //bug with specificator% when %% shold handle this kind of works
-// s21_size_t s21_sprintf_handle_specifier(const char *format,s21_size_t fmt_index,s21_token_t *spec_token);
-// //start/end handler
+int s21_sprintf(char *str, const char *format, ...) {
+  Token_t tokens[64] = {0};
+  Token_t *current_token = S21_NULL;
+  int token_begin_index = 0;
+  int tokens_count = 0;
+  int parameters_count = 0;
+  int format_length = 0;
+  int current_char = 0;
 
-// void show_string_info(s21_token_t *tokens,int tokens_count,int parameters_count,const char* format);
+  format_length = (int)s21_strlen(format);
 
-//нужно обмазаться проверками на %, иначе начинается дичь
-int s21_sprintf(char *str, const char *format, ...){
-    s21_token_t tokens[1024]={};
-    s21_token_t* current_token=S21_NULL;
-    int tokens_count=0;
-    int parameters_count=0;
+  //"hello   %d world%s from sprintf\n"
 
-    s21_size_t fmt_size=0;
-    s21_size_t index=0;
-    s21_size_t text_start_index=0;
-    //s21_size_t text_length=0;
+  for (int i = 0; i <= format_length; i++) {
+    current_char = format[i];
 
-    printf("%s",str);
+    if (current_char == '%' || i == format_length) {
+      current_token = &tokens[tokens_count];
+      parse_text_from_format(format, token_begin_index, i, current_token);
+      tokens_count++;
+      token_begin_index = i;
+    }
+  }
 
-    fmt_size=s21_strlen(format);
+  printf("Tokens count = %d items\n\n", tokens_count);
 
-    for(;index<fmt_size;index++){
-        if(!current_token)
-            current_token=&tokens[tokens_count];
-
-        if(format[index]=='%'){
-            if(index || (format[index+1]=='%')){
-                //text_length=index-text_start_index;
-                //s21_sprintf_handle_text(format,text_start_index,text_length,current_token);
-                tokens_count++;
-                current_token=&tokens[tokens_count];
-            }
-
-            text_start_index=0;
-        }
-
-        if(!text_start_index)
-            text_start_index=index;
-        // if(format[index]=='%'){
-        //     if(index && index>(text_start_index+1)){
-        //         s21_sprintf_handle_text(format,text_start_index,index,current_token);
-        //         tokens_count++;
-        //         current_token=&tokens[tokens_count];
-        //     }
-            
-        //     if(format[index+1]!='%'){
-        //     index=s21_sprintf_handle_specifier(format,index,current_token);
-        //     tokens_count++;
-        //     parameters_count++;
-        //     text_start_index=index;
-
-        //     current_token=S21_NULL;}
-        // }
+  for (int j = 0; j < tokens_count; j++) {
+    switch (tokens[j].token_type) {
+    case text:
+      printf("\tToken type : text\n");
+      break;
+    case integer:
+      printf("\tToken type : integer\n");
+      break;
+    case string:
+      printf("\tToken type : string\n");
+      break;
     }
 
-    // if(current_token){
-    //     text_length=index-text_start_index;
-    //     s21_sprintf_handle_text(format,text_start_index,text_length,current_token);
-    //     tokens_count++;
+    printf("\tToken string : ");
+    for (int k = 0; tokens[j].token_string[k]; k++)
+      putchar(tokens[j].token_string[k]);
 
-    //     index=0;
-    //     text_length=0;
-    //     current_token=S21_NULL;
-    // }
+    printf("\n");
+    printf("\tToken size : %ld items\n\n", tokens[j].token_size - 1);
+  }
 
-    //show_string_info(tokens,tokens_count,parameters_count,format);
-
-    return parameters_count;
+  return 0;
 }
 
-// void s21_sprintf_handle_text(const char *string,s21_size_t start_index, s21_size_t text_length,s21_token_t *text_token){
-//     s21_size_t index=0;
+void parse_text_from_format(const char *format_string, int begin_index,
+                            int end_index, Token_t *token) {
+  int token_length = 0;
+  token->token_type = text;
 
-//     index=start_index;
-//     text_token->type=text;
-//     for(;index<text_length;index++)
-//         text_token->buffer[index-start_index]=string[index];
+  token_length = end_index - begin_index;
 
-//     text_token->buffer[text_length]='\0';
-// }
+  for (int i = begin_index; i < end_index; i++) {
+    // if()
+    token->token_string[i - begin_index] = format_string[i];
+  }
 
-// s21_size_t s21_sprintf_handle_specifier(const char *format,s21_size_t fmt_index,s21_token_t *spec_token){
-//     int break_flag=0;
-//     s21_size_t start_index=0;
-//     int delta=0;
-
-//     start_index=++fmt_index;
-
-//     while(!break_flag && format[fmt_index]){
-        
-//         switch(format[fmt_index]){
-//         case 's':
-//         spec_token->type=string;
-
-//         break_flag=1;
-//         break;
-//         case 'd':
-//         spec_token->type=integer;
-//         break_flag=1;
-//         break;
-//         }
-        
-//         fmt_index++;    
-//     }
-
-//     delta=fmt_index-start_index;
-//     s21_strncat(spec_token->buffer,format+start_index,delta);
-
-//     return fmt_index;
-// }
-
-// void show_string_info(s21_token_t *tokens,int tokens_count,int parameters_count,const char* format){
-//     printf("Source string : %s\n",format);
-
-//     printf("String is : ");
-
-//     for(int i=0;i<tokens_count;i++)
-//                 printf("$%s",tokens[i].buffer);
-        
-//     putchar('\n');
-
-
-//     for(int i=0;i<tokens_count;i++){
-//         printf("\nToken type: ");
-//         switch(tokens[i].type){
-//             case text:
-//                 printf("text\n");
-//             break;
-//             case integer:
-//                 printf("integer\n");
-//             break;
-//             case string:
-//                 printf("string\n");
-//             break;
-//         }
-        
-//         for(s21_size_t index=0;tokens[i].buffer[index];index++)//возможно вылетит в сегфолт
-//             putchar(tokens[i].buffer[index]);
-        
-//         putchar('\n');
-//     }
-
-//     printf("\nHandled parameters : %d\n",parameters_count);
-// }
+  token->token_string[token_length++] = '\0';
+  token->token_size = (s21_size_t)token_length;
+}
