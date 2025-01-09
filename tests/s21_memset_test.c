@@ -1,164 +1,179 @@
 #include "s21_check_string.h"
 
-//нуль копируемых символов
-//правильный размер строк
-//символ раз
+//  char str_s21[] = "Hello world!";
+//  char str[] = "Hello world!";
+//  int c = 'w';
+//  size_t n = 10;
 START_TEST(test_s21_memset_1) {
-  char s21_str[] = "Hello world!";
+  char str_s21[] = "Hello world!";
   char str[] = "Hello world!";
-
+  int c = 'w';
+  size_t n = 10;
   char *s21_memset_result = NULL;
   char *memset_result = NULL;
 
-  s21_memset_result = (char *)s21_memset(s21_str, EXIST_CH, NUMBER);
-  memset_result = (char *)memset(str, EXIST_CH, NUMBER);
+  s21_memset_result = (char *)s21_memset(str_s21, c, n);
+  memset_result = (char *)memset(str, c, n);
 
   ck_assert_str_eq(s21_memset_result, memset_result);
 }
 END_TEST
 
-//второй вариант строк
-//символ раз
+//  char str_s21[] = "there is no power as no knowledge";
+//  char str[] = "there is no power as no knowledge";
+//  int c = 'w';
+//  size_t n = 10;
 START_TEST(test_s21_memset_2) {
-  char s21_str[] = "there is no power as no knowledge";
+  char str_s21[] = "there is no power as no knowledge";
   char str[] = "there is no power as no knowledge";
-
+  int c = 'w';
+  size_t n = 10;
   char *s21_memset_result = NULL;
   char *memset_result = NULL;
 
-  s21_memset_result = (char *)s21_memset(s21_str, EXIST_CH, NUMBER);
-  memset_result = (char *)memset(str, EXIST_CH, NUMBER);
+  s21_memset_result = (char *)s21_memset(str_s21, c, n);
+  memset_result = (char *)memset(str, c, n);
 
   ck_assert_str_eq(s21_memset_result, memset_result);
 }
 END_TEST
 
-//символ двас
+//  char str_s21[] = "Hello world!";
+//  char str[] = "Hello world!";
+//  int c = ']';
+//  size_t n = 10;
 START_TEST(test_s21_memset_3) {
-  char s21_str[] = "Hello world!";
+  char str_s21[] = "Hello world!";
   char str[] = "Hello world!";
-
+  int c = ']';
+  size_t n = 10;
   char *s21_memset_result = NULL;
   char *memset_result = NULL;
 
-  s21_memset_result = (char *)s21_memset(s21_str, NOT_EXIST_CH, NUMBER);
-  memset_result = (char *)memset(str, NOT_EXIST_CH, NUMBER);
+  s21_memset_result = (char *)s21_memset(str_s21, c, n);
+  memset_result = (char *)memset(str, c, n);
 
   ck_assert_str_eq(s21_memset_result, memset_result);
 }
 END_TEST
 
-//второй вариант строк
-//символ двас
+//  char str_s21[] = "there is no power as no knowledge";
+//  char str[] = "there is no power as no knowledge";
+//  int c = ']';
+//  size_t n = 10;
 START_TEST(test_s21_memset_4) {
-  char s21_str[] = "there is no power as no knowledge";
+  char str_s21[] = "there is no power as no knowledge";
   char str[] = "there is no power as no knowledge";
-
+  int c = ']';
+  size_t n = 10;
   char *s21_memset_result = NULL;
   char *memset_result = NULL;
 
-  s21_memset_result = (char *)s21_memset(s21_str, NOT_EXIST_CH, NUMBER);
-  memset_result = (char *)memset(str, NOT_EXIST_CH, NUMBER);
+  s21_memset_result = (char *)s21_memset(str_s21, c, n);
+  memset_result = (char *)memset(str, c, n);
 
   ck_assert_str_eq(s21_memset_result, memset_result);
 }
 END_TEST
 
-//символ нуль
+//  char str_s21[] = "Hello world!";
+//  char str[] = "Hello world!";
+//  int c = '\0';
+//  size_t n = 10;
 START_TEST(test_s21_memset_5) {
-  char s21_str[] = "Hello world!";
+  char str_s21[] = "Hello world!";
   char str[] = "Hello world!";
-
+  int c = '\0';
+  size_t n = 10;
   char *s21_memset_result = NULL;
   char *memset_result = NULL;
 
-  s21_memset_result = (char *)s21_memset(s21_str, ZERO_CH, NUMBER);
-  memset_result = (char *)memset(str, ZERO_CH, NUMBER);
+  s21_memset_result = (char *)s21_memset(str_s21, c, n);
+  memset_result = (char *)memset(str, c, n);
 
   ck_assert_str_eq(s21_memset_result, memset_result);
 }
 END_TEST
 
-//второй вариант строк
-//символ нуль
+//  char str_s21[] = "there is no power as no knowledge";
+//  char str[] = "there is no power as no knowledge";
+//  int c = '\0';
+//  size_t n = 10;
 START_TEST(test_s21_memset_6) {
-  char s21_str[] = "there is no power as no knowledge";
+  char str_s21[] = "there is no power as no knowledge";
   char str[] = "there is no power as no knowledge";
-
+  int c = '\0';
+  size_t n = 10;
   char *s21_memset_result = NULL;
   char *memset_result = NULL;
 
-  s21_memset_result = (char *)s21_memset(s21_str, NOT_EXIST_CH, NUMBER);
-  memset_result = (char *)memset(str, NOT_EXIST_CH, NUMBER);
+  s21_memset_result = (char *)s21_memset(str_s21, c, n);
+  memset_result = (char *)memset(str, c, n);
 
   ck_assert_str_eq(s21_memset_result, memset_result);
 }
 END_TEST
 
-//отрицательный код символа
+//  char str_s21[] = "Hello world!";
+//  char str[] = "Hello world!";
+//  int c = -7;
+//  size_t n = 10;
 START_TEST(test_s21_memset_7) {
-  char s21_str[] = "Hello world!";
+  char str_s21[] = "Hello world!";
   char str[] = "Hello world!";
-
+  int c = -7;
+  size_t n = 10;
   char *s21_memset_result = NULL;
   char *memset_result = NULL;
 
-  s21_memset_result = (char *)s21_memset(s21_str, NEGATIVE_NUMBER, NUMBER);
-  memset_result = (char *)memset(str, NEGATIVE_NUMBER, NUMBER);
+  s21_memset_result = (char *)s21_memset(str_s21, c, n);
+  memset_result = (char *)memset(str, c, n);
 
   ck_assert_str_eq(s21_memset_result, memset_result);
 }
 END_TEST
 
-//второй вариант строк
-//отрицательный код символа
+//  char str_s21[] = "there is no power as no knowledge";
+//  char str[] = "there is no power as no knowledge";
+//  int c = -7;
+//  size_t n = 10;
 START_TEST(test_s21_memset_8) {
-  char s21_str[] = "there is no power as no knowledge";
+  char str_s21[] = "there is no power as no knowledge";
   char str[] = "there is no power as no knowledge";
-
+  int c = -7;
+  size_t n = 10;
   char *s21_memset_result = NULL;
   char *memset_result = NULL;
 
-  s21_memset_result = (char *)s21_memset(s21_str, NEGATIVE_NUMBER, NUMBER);
-  memset_result = (char *)memset(str, NEGATIVE_NUMBER, NUMBER);
+  s21_memset_result = (char *)s21_memset(str_s21, c, n);
+  memset_result = (char *)memset(str, c, n);
 
   ck_assert_str_eq(s21_memset_result, memset_result);
 }
 END_TEST
 
-// //нулевое количество символов
-// START_TEST (test_s21_memset_9)
-// {
-//     char s21_str[]="Hello world!";
-//     char str[]="Hello world!";
+// //нулевое количество символов выдает ошибку:
+// // error: ‘memset’ used with constant zero length parameter; this could be
+// due
+// // to transposed parameters [-Werror=memset-transposed-args]
+// //  char str_s21[] = "Hello world!";
+// //  char str[] = "Hello world!";
+// //  int c = -7;
+// //  size_t n = 0;
+// START_TEST(test_s21_memset_9) {
+//   char str_s21[] = "Hello world!";
+//   char str[] = "Hello world!";
+//   int c = -7;
+//   size_t n = 0;
+//   char *s21_memset_result = NULL;
+//   char *memset_result = NULL;
 
-//   char* s21_memset_result=NULL;
-//   char* memset_result=NULL;
+//   s21_memset_result = (char *)s21_memset(str_s21, c, n);
+//   memset_result = (char *)memset(str, c, n);
 
-//   s21_memset_result=(char*)s21_memset(s21_str,NEGATIVE_NUMBER,ZERO_NUMBER);
-//   memset_result=(char*)memset(str,NEGATIVE_NUMBER,ZERO_NUMBER);
-
-//   ck_assert_str_eq(s21_memset_result,memset_result);
+//   ck_assert_str_eq(s21_memset_result, memset_result);
 // }
 // END_TEST
-
-//второй вариант строк
-//нулевое количество символов
-// START_TEST (test_s21_memset_10)
-// {
-//     char s21_str[]="there is no power as no knowledge";
-//     char str[]="there is no power as no knowledge";
-
-//   char* s21_memset_result=NULL;
-//   char* memset_result=NULL;
-
-//   s21_memset_result=(char*)s21_memset(s21_str,NEGATIVE_NUMBER,ZERO_NUMBER);
-//   memset_result=(char*)memset(str,NEGATIVE_NUMBER,ZERO_NUMBER);
-
-//   ck_assert_str_eq(s21_memset_result,memset_result);
-// }
-// END_TEST
-//
 
 //отрицательные количества дают сегу
 //бОльшие числа, чем есть в строке дают IOT stack smashing
@@ -170,53 +185,71 @@ Suite *s21_memset_suite(void) {
 
   tc_s21_memset = tcase_create("Memset");
 
-  //нуль копируемых символов
-  ////правильный размер строк
-  ////символ раз
+  //  char str_s21[] = "Hello world!";
+  //  char str[] = "Hello world!";
+  //  int c = 'w';
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memset, test_s21_memset_1);
   suite_add_tcase(suite, tc_s21_memset);
 
-  ////второй вариант строк
-  ////символ раз
+  //  char str_s21[] = "there is no power as no knowledge";
+  //  char str[] = "there is no power as no knowledge";
+  //  int c = 'w';
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memset, test_s21_memset_2);
   suite_add_tcase(suite, tc_s21_memset);
 
-  ////символ двас
+  //  char str_s21[] = "Hello world!";
+  //  char str[] = "Hello world!";
+  //  int c = ']';
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memset, test_s21_memset_3);
   suite_add_tcase(suite, tc_s21_memset);
 
-  ////второй вариант строк
-  ////символ двас
+  //  char str_s21[] = "there is no power as no knowledge";
+  //  char str[] = "there is no power as no knowledge";
+  //  int c = ']';
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memset, test_s21_memset_4);
   suite_add_tcase(suite, tc_s21_memset);
 
-  ////символ нуль
+  //  char str_s21[] = "Hello world!";
+  //  char str[] = "Hello world!";
+  //  int c = '\0';
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memset, test_s21_memset_5);
   suite_add_tcase(suite, tc_s21_memset);
 
-  ////второй вариант строк
-  ////символ нуль
+  //  char str_s21[] = "there is no power as no knowledge";
+  //  char str[] = "there is no power as no knowledge";
+  //  int c = '\0';
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memset, test_s21_memset_6);
   suite_add_tcase(suite, tc_s21_memset);
 
-  ////отрицательный код символа
+  //  char str_s21[] = "Hello world!";
+  //  char str[] = "Hello world!";
+  //  int c = -7;
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memset, test_s21_memset_7);
   suite_add_tcase(suite, tc_s21_memset);
 
-  ////второй вариант строк
-  ////отрицательный код символа
+  //  char str_s21[] = "there is no power as no knowledge";
+  //  char str[] = "there is no power as no knowledge";
+  //  int c = -7;
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memset, test_s21_memset_8);
   suite_add_tcase(suite, tc_s21_memset);
 
-  //убраны, чтобы не мудрить с флагами
-  // ////нулевое количество символов
-  //     tcase_add_test(tc_s21_memset, test_s21_memset_9);
-  //     suite_add_tcase(suite, tc_s21_memset);
-
-  // ////второй вариант строк
-  // ////нулевое количество символов
-  //     tcase_add_test(tc_s21_memset, test_s21_memset_10);
-  //     suite_add_tcase(suite, tc_s21_memset);
+  // //нулевое количество символов выдает ошибку:
+  // //error: ‘memset’ used with constant zero length parameter; this could be
+  // due to transposed parameters [-Werror=memset-transposed-args]
+  // //  char str_s21[] = "Hello world!";
+  // //  char str[] = "Hello world!";
+  // //  int c = -7;
+  // //  size_t n = 0;
+  //   tcase_add_test(tc_s21_memset, test_s21_memset_9);
+  //   suite_add_tcase(suite, tc_s21_memset);
 
   return suite;
 }
