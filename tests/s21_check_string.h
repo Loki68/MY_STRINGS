@@ -8,32 +8,6 @@
 //ну  эталонная реализация, с которой сравнивать наши реализации функций
 #include <string.h>
 
-//вместо массивов и остального,можно легко заменить
-//один массив гномам, один эльфам...не, один для написанной функции,второй для
-//стандартной. в процессе тестирования строки будут изменяться, так что двойной
-//набор
-#define T21_STR_1 "Hello world!"
-#define T_STR_1 "Hello world!"
-#define T_STR_2 "Hello world"
-#define T_STR_SHORT "Hello"
-#define T_STR_END "world"
-#define T_S_W_ZERO "bytecode\0why"
-#define T_STR_A_SHORT "KHA..An!!11"
-#define T_EMPTY ""
-#define T_NO_SYMB "GEn_5"
-//символы для функций поиска символов:
-//существующий в строке, нулевой и не существующий
-#define EXIST_CH 'w'
-#define ZERO_CH '\0'
-#define NOT_EXIST_CH ']'
-//индексы для функций, принимающих в качестве аргумента число элементов строки
-//тоже шаблонноЖ
-//находящийся внутри строки, за ее пределами и отрицательный
-#define ZERO_NUMBER 0
-#define NUMBER 10
-#define OVERFLOW_NUMBER 50
-#define NEGATIVE_NUMBER -5
-
 //чтобы добавить новый набор тестов, нужно просто добавить аналогичную строку
 //ниже:
 //  Suite *подходящее_название(void);

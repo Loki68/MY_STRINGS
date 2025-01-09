@@ -97,11 +97,11 @@ END_TEST
 
 //   char* str1 = "Hello world!";
 //   char* str2 = "Hello";
-//   size_t n = strlen(T21_STR_1);
+//   size_t n = strlen(str1);
 START_TEST(test_s21_memcmp_6) {
   char *str1 = "Hello world!";
   char *str2 = "Hello";
-  size_t n = strlen(T21_STR_1);
+  size_t n = strlen(str1);
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
@@ -212,7 +212,7 @@ Suite *s21_memcmp_suite(void) {
 
   //   char* str1 = "Hello world!";
   //   char* str2 = "Hello";
-  //   size_t n = strlen(T21_STR_1);
+  //   size_t n = strlen(str1);
   tcase_add_test(tc_s21_memcmp, test_s21_memcmp_6);
   suite_add_tcase(suite, tc_s21_memcmp);
 
