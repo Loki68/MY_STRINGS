@@ -1,219 +1,290 @@
 #include "s21_check_string.h"
 
-//верное количество символов
-//существующий в строке символ
+//  char* str = "Hello world!";
+//  char c = 'w';
+//  size_t n = 10;
 START_TEST(test_s21_memchr_1) {
+  char *str = "Hello world!";
+  char c = 'w';
+  size_t n = 10;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, EXIST_CH, NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, EXIST_CH, NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
 
-//не существующий в строке символ
+//  char* str = "Hello world!";
+//  char c = ']';
+//  size_t n = 10;
 START_TEST(test_s21_memchr_2) {
+  char *str = "Hello world!";
+  char c = ']';
+  size_t n = 10;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, NOT_EXIST_CH, NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, NOT_EXIST_CH, NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
 
-//нулевой символ
+//  char* str = "Hello world!";
+//  char c = '\0';
+//  size_t n = 10;
 START_TEST(test_s21_memchr_3) {
+  char *str = "Hello world!";
+  char c = '\0';
+  size_t n = 10;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, ZERO_CH, NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, ZERO_CH, NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
-//
 
-//большее, чем символов в dest количество символов
-//существующий в строке символ
+//  char* str = "Hello world!";
+//  char c = 'w';
+//  size_t n = 50;
 START_TEST(test_s21_memchr_4) {
+  char *str = "Hello world!";
+  char c = 'w';
+  size_t n = 50;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, EXIST_CH, OVERFLOW_NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, EXIST_CH, OVERFLOW_NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
 
-//не существующий в строке символ
+//  char* str = "Hello world!";
+//  char c = ']';
+//  size_t n = 50;
 START_TEST(test_s21_memchr_5) {
+  char *str = "Hello world!";
+  char c = ']';
+  size_t n = 50;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, NOT_EXIST_CH, OVERFLOW_NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, NOT_EXIST_CH, OVERFLOW_NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
 
-//нулевой символ
+//  char* str = "Hello world!";
+//  char c = '\0';
+//  size_t n = 50;
 START_TEST(test_s21_memchr_6) {
+  char *str = "Hello world!";
+  char c = '\0';
+  size_t n = 50;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, ZERO_CH, OVERFLOW_NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, ZERO_CH, OVERFLOW_NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
-//
 
-//отрицательное количество символов
-//существующий в строке символ
+//  char* str = "Hello world!";
+//  char c = 'w';
+//  size_t n = -5;
 START_TEST(test_s21_memchr_7) {
+  char *str = "Hello world!";
+  char c = 'w';
+  size_t n = -5;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, EXIST_CH, NEGATIVE_NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, EXIST_CH, NEGATIVE_NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
 
-//не существующий в строке символ
+//  char* str = "Hello world!";
+//  char c = ']';
+//  size_t n = -5;
 START_TEST(test_s21_memchr_8) {
+  char *str = "Hello world!";
+  char c = ']';
+  size_t n = -5;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, NOT_EXIST_CH, NEGATIVE_NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, NOT_EXIST_CH, NEGATIVE_NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
 
-//нулевой символ
+//  char* str = "Hello world!";
+//  char c = '\0';
+//  size_t n = -5;
 START_TEST(test_s21_memchr_9) {
+  char *str = "Hello world!";
+  char c = '\0';
+  size_t n = -5;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, ZERO_CH, NEGATIVE_NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, ZERO_CH, NEGATIVE_NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
-//
 
-//нулевое количество символов
-//существующий в строке символ
+//  char* str = "Hello world!";
+//  char c = 'w';
+//  size_t n = 0;
 START_TEST(test_s21_memchr_10) {
+  char *str = "Hello world!";
+  char c = 'w';
+  size_t n = 0;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, EXIST_CH, ZERO_NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, EXIST_CH, ZERO_NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
 
-//не существующий в строке символ
+//  char* str = "Hello world!";
+//  char c = ']';
+//  size_t n = 0;
 START_TEST(test_s21_memchr_11) {
+  char *str = "Hello world!";
+  char c = ']';
+  size_t n = 0;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, NOT_EXIST_CH, ZERO_NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, NOT_EXIST_CH, ZERO_NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
 
-//нулевой символ
+//  char* str = "Hello world!";
+//  char c = '\0';
+//  size_t n = 0;
 START_TEST(test_s21_memchr_12) {
+  char *str = "Hello world!";
+  char c = '\0';
+  size_t n = 0;
   char *str_ptr = NULL;
-  char *s21_str_ptr = S21_NULL;
+  char *s21_str_ptr = NULL;
 
-  str_ptr = memchr(T21_STR_1, ZERO_CH, ZERO_NUMBER);
-  s21_str_ptr = s21_memchr(T21_STR_1, ZERO_CH, ZERO_NUMBER);
+  str_ptr = memchr(str, c, n);
+  s21_str_ptr = s21_memchr(str, c, n);
 
   ck_assert_ptr_eq(str_ptr, s21_str_ptr);
 }
 END_TEST
 //
 
+// n < 0 || &&c<0 => sega
 Suite *s21_memchr_suite(void) {
   Suite *suite;
   TCase *tc_s21_memchr;
-  TCase *tc_s21_memchr_limits;
 
   suite = suite_create("s21_memchr");
 
-  tc_s21_memchr = tcase_create("Core");
+  tc_s21_memchr = tcase_create("S21_memchr");
 
-  //верное количество символов
-  ////существующий в строке символ
+  //  char* str = "Hello world!";
+  //  char c = 'w';
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memchr, test_s21_memchr_1);
   suite_add_tcase(suite, tc_s21_memchr);
 
-  tc_s21_memchr_limits = tcase_create("Limits");
+  //  char* str = "Hello world!";
+  //  char c = ']';
+  //  size_t n = 10;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_2);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  ////не существующий в строке символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_2);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = '\0';
+  //  size_t n = 10;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_3);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  ////нулевой символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_3);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = 'w';
+  //  size_t n = 50;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_4);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  //большее, чем символов в dest количество символов
-  ////существующий в строке символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_4);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = ']';
+  //  size_t n = 50;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_5);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  ////не существующий в строке символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_5);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = '\0';
+  //  size_t n = 50;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_6);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  ////нулевой символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_6);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = 'w';
+  //  size_t n = -5;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_7);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  //отрицательное количество символов
-  ////существующий в строке символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_7);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = ']';
+  //  size_t n = -5;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_8);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  ////не существующий в строке символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_8);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = '\0';
+  //  size_t n = -5;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_9);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  ////нулевой символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_9);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = 'w';
+  //  size_t n = 0;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_10);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  //нулевое количество символов
-  //существующий в строке символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_10);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = ']';
+  //  size_t n = 0;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_11);
+  suite_add_tcase(suite, tc_s21_memchr);
 
-  ////не существующий в строке символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_11);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
-
-  ////нулевой символ
-  tcase_add_test(tc_s21_memchr_limits, test_s21_memchr_12);
-  suite_add_tcase(suite, tc_s21_memchr_limits);
+  //  char* str = "Hello world!";
+  //  char c = '\0';
+  //  size_t n = 0;
+  tcase_add_test(tc_s21_memchr, test_s21_memchr_12);
+  suite_add_tcase(suite, tc_s21_memchr);
 
   return suite;
 }

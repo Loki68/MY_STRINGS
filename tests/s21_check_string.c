@@ -2,8 +2,7 @@
 // TODO
 // check all before strchr because segfault it's because NULL
 
-// memchr good
-
+// memchr finished
 // memcmp finished
 // memcpy finished
 // memset finished
