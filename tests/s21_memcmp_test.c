@@ -1,13 +1,17 @@
 #include "s21_check_string.h"
 
-//одинаковые строки
-//правильный размер
+//   char* str1 = "Hello world!";
+//   char* str2 = "Hello world!";
+//   size_t n = 10;
 START_TEST(test_s21_memcmp_1) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello world!";
+  size_t n = 10;
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
-  s21_memcmp_result = s21_memcmp(T21_STR_1, T21_STR_1, NUMBER);
-  memcmp_result = memcmp(T21_STR_1, T21_STR_1, NUMBER);
+  s21_memcmp_result = s21_memcmp(str1, str2, n);
+  memcmp_result = memcmp(str1, str2, n);
 
   ck_assert_msg(s21_memcmp_result == memcmp_result,
                 "Значения : %d и %d не совпадают", s21_memcmp_result,
@@ -15,13 +19,18 @@ START_TEST(test_s21_memcmp_1) {
 }
 END_TEST
 
-//размер > 0 за границами str1
+//   char* str1 = "Hello world!";
+//   char* str2 = "Hello world!";
+//   size_t n = 50;
 START_TEST(test_s21_memcmp_2) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello world!";
+  size_t n = 50;
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
-  s21_memcmp_result = s21_memcmp(T21_STR_1, T21_STR_1, OVERFLOW_NUMBER);
-  memcmp_result = memcmp(T21_STR_1, T21_STR_1, OVERFLOW_NUMBER);
+  s21_memcmp_result = s21_memcmp(str1, str2, n);
+  memcmp_result = memcmp(str1, str2, n);
 
   ck_assert_msg(s21_memcmp_result == memcmp_result,
                 "Значения : %d и %d не совпадают", s21_memcmp_result,
@@ -29,13 +38,18 @@ START_TEST(test_s21_memcmp_2) {
 }
 END_TEST
 
-//размер = 0
+//   char* str1 = "Hello world!";
+//   char* str2 = "Hello world!";
+//   size_t n = 0;
 START_TEST(test_s21_memcmp_3) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello world!";
+  size_t n = 0;
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
-  s21_memcmp_result = s21_memcmp(T21_STR_1, T21_STR_1, ZERO_NUMBER);
-  memcmp_result = memcmp(T21_STR_1, T21_STR_1, ZERO_NUMBER);
+  s21_memcmp_result = s21_memcmp(str1, str2, n);
+  memcmp_result = memcmp(str1, str2, n);
 
   ck_assert_msg(s21_memcmp_result == memcmp_result,
                 "Значения : %d и %d не совпадают", s21_memcmp_result,
@@ -43,14 +57,18 @@ START_TEST(test_s21_memcmp_3) {
 }
 END_TEST
 
-//разные строки
-//правильный размер
+//   char* str1 = "Hello world!";
+//   char* str2 = "Hello";
+//   size_t n = 10;
 START_TEST(test_s21_memcmp_4) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello";
+  size_t n = 10;
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
-  s21_memcmp_result = s21_memcmp(T21_STR_1, T_STR_SHORT, NUMBER);
-  memcmp_result = memcmp(T21_STR_1, T_STR_SHORT, NUMBER);
+  s21_memcmp_result = s21_memcmp(str1, str2, n);
+  memcmp_result = memcmp(str1, str2, n);
 
   ck_assert_msg(s21_memcmp_result == memcmp_result,
                 "Значения : %d и %d не совпадают", s21_memcmp_result,
@@ -58,13 +76,18 @@ START_TEST(test_s21_memcmp_4) {
 }
 END_TEST
 
-//размер за границами массива
+//   char* str1 = "Hello world!";
+//   char* str2 = "Hello";
+//   size_t n = 50;
 START_TEST(test_s21_memcmp_5) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello";
+  size_t n = 50;
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
-  s21_memcmp_result = s21_memcmp(T21_STR_1, T_STR_SHORT, OVERFLOW_NUMBER);
-  memcmp_result = memcmp(T21_STR_1, T_STR_SHORT, OVERFLOW_NUMBER);
+  s21_memcmp_result = s21_memcmp(str1, str2, n);
+  memcmp_result = memcmp(str1, str2, n);
 
   ck_assert_msg(s21_memcmp_result == memcmp_result,
                 "Значения : %d и %d не совпадают", s21_memcmp_result,
@@ -72,14 +95,18 @@ START_TEST(test_s21_memcmp_5) {
 }
 END_TEST
 
-//правильный размер но больше на 1 чем нужно
+//   char* str1 = "Hello world!";
+//   char* str2 = "Hello";
+//   size_t n = strlen(T21_STR_1);
 START_TEST(test_s21_memcmp_6) {
-  size_t size = strlen(T21_STR_1);
+  char *str1 = "Hello world!";
+  char *str2 = "Hello";
+  size_t n = strlen(T21_STR_1);
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
-  s21_memcmp_result = s21_memcmp(T21_STR_1, T_STR_2, size);
-  memcmp_result = memcmp(T21_STR_1, T_STR_2, size);
+  s21_memcmp_result = s21_memcmp(str1, str2, n);
+  memcmp_result = memcmp(str1, str2, n);
 
   ck_assert_msg(s21_memcmp_result == memcmp_result,
                 "Значения : %d и %d не совпадают", s21_memcmp_result,
@@ -87,13 +114,18 @@ START_TEST(test_s21_memcmp_6) {
 }
 END_TEST
 
-//размер < 0
+//   char* str1 = "Hello world!";
+//   char* str2 = "Hello world!";
+//   size_t n = -5;
 START_TEST(test_s21_memcmp_7) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello world!";
+  size_t n = -5;
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
-  s21_memcmp_result = s21_memcmp(T21_STR_1, T21_STR_1, NEGATIVE_NUMBER);
-  memcmp_result = memcmp(T21_STR_1, T21_STR_1, NEGATIVE_NUMBER);
+  s21_memcmp_result = s21_memcmp(str1, str2, n);
+  memcmp_result = memcmp(str1, str2, n);
 
   ck_assert_msg(s21_memcmp_result == memcmp_result,
                 "Значения : %d и %d не совпадают", s21_memcmp_result,
@@ -101,13 +133,18 @@ START_TEST(test_s21_memcmp_7) {
 }
 END_TEST
 
-//размер < 0
+//   char* str1 = "Hello world!";
+//   char* str2 = "Hello_world!";
+//   size_t n = -5;
 START_TEST(test_s21_memcmp_8) {
+  char *str1 = "Hello world!";
+  char *str2 = "Hello_world!";
+  size_t n = -5;
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
-  s21_memcmp_result = s21_memcmp(T21_STR_1, T_STR_2, NEGATIVE_NUMBER);
-  memcmp_result = memcmp(T21_STR_1, T_STR_2, NEGATIVE_NUMBER);
+  s21_memcmp_result = s21_memcmp(str1, str2, n);
+  memcmp_result = memcmp(str1, str2, n);
 
   ck_assert_msg(s21_memcmp_result == memcmp_result,
                 "Значения : %d и %d не совпадают", s21_memcmp_result,
@@ -115,14 +152,18 @@ START_TEST(test_s21_memcmp_8) {
 }
 END_TEST
 
-//разные строки
-//правильный размер
+//   char* str1 = "Hello";
+//   char* str2 = "Hello world!";
+//   size_t n = 10;
 START_TEST(test_s21_memcmp_9) {
+  char *str1 = "Hello";
+  char *str2 = "Hello world!";
+  size_t n = 10;
   int s21_memcmp_result = 0;
   int memcmp_result = 0;
 
-  s21_memcmp_result = s21_memcmp(T_STR_SHORT, T21_STR_1, NUMBER);
-  memcmp_result = memcmp(T_STR_SHORT, T21_STR_1, NUMBER);
+  s21_memcmp_result = s21_memcmp(str1, str2, n);
+  memcmp_result = memcmp(str1, str2, n);
 
   ck_assert_msg(s21_memcmp_result == memcmp_result,
                 "Значения : %d и %d не совпадают", s21_memcmp_result,
@@ -131,55 +172,67 @@ START_TEST(test_s21_memcmp_9) {
 END_TEST
 //
 
-// 1 suite нужно названия подобрать
 Suite *s21_memcmp_suite(void) {
   Suite *suite;
   TCase *tc_s21_memcmp;
-  TCase *tc_s21_memcmp_limits;
 
   suite = suite_create("s21_memcmp");
 
-  tc_s21_memcmp = tcase_create("Core");
+  tc_s21_memcmp = tcase_create("S21_memcmp");
 
-  //одинаковые строки
-  ////правильный размер
+  //   char* str1 = "Hello world!";
+  //   char* str2 = "Hello world!";
+  //   size_t n = 10;
   tcase_add_test(tc_s21_memcmp, test_s21_memcmp_1);
   suite_add_tcase(suite, tc_s21_memcmp);
 
-  tc_s21_memcmp_limits = tcase_create("Limits");
+  //   char* str1 = "Hello world!";
+  //   char* str2 = "Hello world!";
+  //   size_t n = 50;
+  tcase_add_test(tc_s21_memcmp, test_s21_memcmp_2);
+  suite_add_tcase(suite, tc_s21_memcmp);
 
-  ////размер > 0 за границами str1
-  tcase_add_test(tc_s21_memcmp_limits, test_s21_memcmp_2);
-  suite_add_tcase(suite, tc_s21_memcmp_limits);
+  //   char* str1 = "Hello world!";
+  //   char* str2 = "Hello world!";
+  //   size_t n = 0;
+  tcase_add_test(tc_s21_memcmp, test_s21_memcmp_3);
+  suite_add_tcase(suite, tc_s21_memcmp);
 
-  ////размер = 0
-  tcase_add_test(tc_s21_memcmp_limits, test_s21_memcmp_3);
-  suite_add_tcase(suite, tc_s21_memcmp_limits);
+  //   char* str1 = "Hello world!";
+  //   char* str2 = "Hello";
+  //   size_t n = 10;
+  tcase_add_test(tc_s21_memcmp, test_s21_memcmp_4);
+  suite_add_tcase(suite, tc_s21_memcmp);
 
-  ////размер < 0
-  tcase_add_test(tc_s21_memcmp_limits, test_s21_memcmp_7);
-  suite_add_tcase(suite, tc_s21_memcmp_limits);
+  //   char* str1 = "Hello world!";
+  //   char* str2 = "Hello";
+  //   size_t n = 50;
+  tcase_add_test(tc_s21_memcmp, test_s21_memcmp_5);
+  suite_add_tcase(suite, tc_s21_memcmp);
 
-  //разные строки
-  ////правильный размер
-  tcase_add_test(tc_s21_memcmp_limits, test_s21_memcmp_4);
-  suite_add_tcase(suite, tc_s21_memcmp_limits);
+  //   char* str1 = "Hello world!";
+  //   char* str2 = "Hello";
+  //   size_t n = strlen(T21_STR_1);
+  tcase_add_test(tc_s21_memcmp, test_s21_memcmp_6);
+  suite_add_tcase(suite, tc_s21_memcmp);
 
-  ////размер за границами массива
-  tcase_add_test(tc_s21_memcmp_limits, test_s21_memcmp_5);
-  suite_add_tcase(suite, tc_s21_memcmp_limits);
+  //   char* str1 = "Hello world!";
+  //   char* str2 = "Hello world!";
+  //   size_t n = -5;
+  tcase_add_test(tc_s21_memcmp, test_s21_memcmp_7);
+  suite_add_tcase(suite, tc_s21_memcmp);
 
-  ////правильный размер но больше на 1 чем нужно
-  tcase_add_test(tc_s21_memcmp_limits, test_s21_memcmp_6);
-  suite_add_tcase(suite, tc_s21_memcmp_limits);
+  //   char* str1 = "Hello world!";
+  //   char* str2 = "Hello_world!";
+  //   size_t n = -5;
+  tcase_add_test(tc_s21_memcmp, test_s21_memcmp_8);
+  suite_add_tcase(suite, tc_s21_memcmp);
 
-  ////размер < 0
-  tcase_add_test(tc_s21_memcmp_limits, test_s21_memcmp_8);
-  suite_add_tcase(suite, tc_s21_memcmp_limits);
-
-  // //разные строки и первая меньше второй
-  tcase_add_test(tc_s21_memcmp_limits, test_s21_memcmp_9);
-  suite_add_tcase(suite, tc_s21_memcmp_limits);
+  //   char* str1 = "Hello";
+  //   char* str2 = "Hello world!";
+  //   size_t n = 10;
+  tcase_add_test(tc_s21_memcmp, test_s21_memcmp_9);
+  suite_add_tcase(suite, tc_s21_memcmp);
 
   return suite;
 }

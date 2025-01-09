@@ -1,11 +1,11 @@
 #include "s21_check_string.h"
 // TODO
 // check all before strchr because segfault it's because NULL
+
 // memchr good
-// memcmp good
 
-// memcpy
-
+// memcmp finished
+// memcpy finished
 // memset finished
 // strchr finished
 // strlen finished
