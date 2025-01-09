@@ -1,80 +1,83 @@
 #include "s21_check_string.h"
 
-//одинаковые строки на вход
-//правильный размер.
+//  char dest_s21[] = "Hello world!";
+//  char dest[] = "Hello world!";
+//  char *src = "KHA..An!!11";
+//  size_t n = 10;
 START_TEST(test_s21_memcpy_1) {
-  char s21_str[] = "Hello world!";
-  char str[] = "Hello world!";
+  char dest_s21[] = "Hello world!";
+  char dest[] = "Hello world!";
+  char *src = "KHA..An!!11";
+  size_t n = 10;
   char *s21_memcpy_result = NULL;
   char *memcpy_result = NULL;
 
-  s21_memcpy_result = (char *)s21_memcpy(s21_str, T_STR_A_SHORT, NUMBER);
-  memcpy_result = (char *)memcpy(str, T_STR_A_SHORT, NUMBER);
+  s21_memcpy_result = (char *)s21_memcpy(dest_s21, src, n);
+  memcpy_result = (char *)memcpy(dest, src, n);
 
   ck_assert_str_eq(s21_memcpy_result, memcpy_result);
 }
 END_TEST
 
-// //больший размер
-// //didn't works in test
-// START_TEST (test_s21_memcpy_5)
-// {
-//   char s21_str[]="Hello world!";
-//   char str[]="Hello world!";
-//   char* s21_memcpy_result=NULL;
-//   char* memcpy_result=NULL;
-
-//   s21_memcpy_result=(char*)s21_memcpy(s21_str,T_STR_A_SHORT,OVERFLOW_NUMBER);
-//   memcpy_result=(char*)memcpy(str,T_STR_A_SHORT,OVERFLOW_NUMBER);
-
-//   ck_assert_str_eq(s21_memcpy_result,memcpy_result);
-// }
-// END_TEST
-
-//второй вариант строк
+//  char dest_s21[] = "there is no power as no knowledge";
+//  char dest[] = "there is no power as no knowledge";
+//  char *src = "Hello";
+//  size_t n = 10;
 START_TEST(test_s21_memcpy_2) {
-  char s21_str_1[] = "there is no power as no knowledge";
-  char str_1[] = "there is no power as no knowledge";
+  char dest_s21[] = "there is no power as no knowledge";
+  char dest[] = "there is no power as no knowledge";
+  char *src = "Hello";
+  size_t n = 10;
   char *s21_memcpy_result = NULL;
   char *memcpy_result = NULL;
 
-  s21_memcpy_result = (char *)s21_memcpy(s21_str_1, T_STR_1, NUMBER);
-  memcpy_result = (char *)memcpy(str_1, T_STR_1, NUMBER);
+  s21_memcpy_result = (char *)s21_memcpy(dest_s21, src, n);
+  memcpy_result = (char *)memcpy(dest, src, n);
 
   ck_assert_str_eq(s21_memcpy_result, memcpy_result);
 }
 END_TEST
 
-//с нулем в строке
+//  char dest_s21[] = "there is no power as no knowledge";
+//  char dest[] = "there is no power as no knowledge";
+//  char *src = "bytecode\0why";
+//  size_t n = 10;
 START_TEST(test_s21_memcpy_3) {
-  char s21_str_1[] = "there is no power as no knowledge";
-  char str_1[] = "there is no power as no knowledge";
+  char dest_s21[] = "there is no power as no knowledge";
+  char dest[] = "there is no power as no knowledge";
+  char *src = "bytecode\0why";
+  size_t n = 10;
   char *s21_memcpy_result = NULL;
   char *memcpy_result = NULL;
 
-  s21_memcpy_result = (char *)s21_memcpy(s21_str_1, T_S_W_ZERO, NUMBER);
-  memcpy_result = (char *)memcpy(str_1, T_S_W_ZERO, NUMBER);
+  s21_memcpy_result = (char *)s21_memcpy(dest_s21, src, n);
+  memcpy_result = (char *)memcpy(dest, src, n);
 
   ck_assert_str_eq(s21_memcpy_result, memcpy_result);
 }
 END_TEST
 
-//нуль копируемых символов
+//  char dest_s21[] = "there is no power as no knowledge";
+//  char dest[] = "there is no power as no knowledge";
+//  char *src = "bytecode\0why";
+//  size_t n = 0;
 START_TEST(test_s21_memcpy_4) {
-  char s21_str_1[] = "there is no power as no knowledge";
-  char str_1[] = "there is no power as no knowledge";
+  char dest_s21[] = "there is no power as no knowledge";
+  char dest[] = "there is no power as no knowledge";
+  char *src = "bytecode\0why";
+  size_t n = 0;
   char *s21_memcpy_result = NULL;
   char *memcpy_result = NULL;
 
-  s21_memcpy_result = (char *)s21_memcpy(s21_str_1, T_STR_A_SHORT, ZERO_NUMBER);
-  memcpy_result = (char *)memcpy(str_1, T_STR_A_SHORT, ZERO_NUMBER);
+  s21_memcpy_result = (char *)s21_memcpy(dest_s21, src, n);
+  memcpy_result = (char *)memcpy(dest, src, n);
 
   ck_assert_str_eq(s21_memcpy_result, memcpy_result);
 }
 END_TEST
 //
 
-//отрицательное - неопределенное поведение
+// n>length || n<0 => sega
 Suite *s21_memcpy_suite(void) {
   Suite *suite;
   TCase *tc_s21_memcpy;
@@ -83,24 +86,31 @@ Suite *s21_memcpy_suite(void) {
 
   tc_s21_memcpy = tcase_create("Core");
 
-  //одинаковые строки на вход
-  ////правильный размер. остальное - неопределенное поведение
+  //  char dest_s21[] = "Hello world!";
+  //  char dest[] = "Hello world!";
+  //  char *src = "KHA..An!!11";
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memcpy, test_s21_memcpy_1);
   suite_add_tcase(suite, tc_s21_memcpy);
 
-  // ////больший размер
-  //   tcase_add_test(tc_s21_memcpy, test_s21_memcpy_5);
-  //   suite_add_tcase(suite, tc_s21_memcpy);
-
-  ////второй вариант строк
+  //  char dest_s21[] = "there is no power as no knowledge";
+  //  char dest[] = "there is no power as no knowledge";
+  //  char *src = "Hello";
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memcpy, test_s21_memcpy_2);
   suite_add_tcase(suite, tc_s21_memcpy);
 
-  ////с нулем в строке
+  //  char dest_s21[] = "there is no power as no knowledge";
+  //  char dest[] = "there is no power as no knowledge";
+  //  char *src = "bytecode\0why";
+  //  size_t n = 10;
   tcase_add_test(tc_s21_memcpy, test_s21_memcpy_3);
   suite_add_tcase(suite, tc_s21_memcpy);
 
-  ////нуль копируемых символов
+  //  char dest_s21[] = "there is no power as no knowledge";
+  //  char dest[] = "there is no power as no knowledge";
+  //  char *src = "bytecode\0why";
+  //  size_t n = 0;
   tcase_add_test(tc_s21_memcpy, test_s21_memcpy_4);
   suite_add_tcase(suite, tc_s21_memcpy);
 

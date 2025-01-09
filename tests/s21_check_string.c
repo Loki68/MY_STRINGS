@@ -3,7 +3,8 @@
 // check all before strchr because segfault it's because NULL
 // memchr good
 // memcmp good
-// memcpy good
+
+// memcpy
 
 // memset finished
 // strchr finished
