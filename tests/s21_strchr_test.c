@@ -83,7 +83,7 @@ Suite *s21_strchr_suite(void) {
 
   suite = suite_create("s21_strchr");
 
-  tc_s21_strchr = tcase_create("Strchr");
+  tc_s21_strchr = tcase_create("S21_strchr");
 
   //  char *str = "Hello world";
   //  int c = 'w';
