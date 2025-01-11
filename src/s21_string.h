@@ -1,6 +1,7 @@
 #ifndef S21_STRING_H_INCLUDED
 #define S21_STRING_H_INCLUDED
-#define S21_NULL 0 //Оч спорно
+
+#define S21_NULL ((void *)0) // Определение S21_NULL
 
 typedef unsigned long int s21_size_t;
 // TODO
