@@ -2,19 +2,24 @@
 // TODO
 // check all before strchr because segfault it's because NULL
 
-// memchr finished
-// memcmp finished
-// memcpy finished
-// memset finished
-// strchr finished
-// strlen finished
-// strncat finished
-// strncmp finished
-// strncpy finished
-// strpbrk finished
-// strrchr finished
-// strstr finished
-// strcspn finished
+// 1 memchr finished
+// 2 memcmp finished
+// 3 memcpy finished
+// 4 memset finished
+// 5 strchr finished
+// 6 strlen finished
+// 7 strncat finished
+// 8 strncmp finished
+// 9 strncpy finished
+// 10 strpbrk finished
+// 11 strrchr finished
+// 12 strstr finished
+// 13 strcspn finished
+
+// 14 strtok in_progress
+// 15 strerror in_progress
+
+// 16 sprintf in_implementation
 
 int main(void) {
   int number_failed = 0;
@@ -33,6 +38,8 @@ int main(void) {
   srunner_add_suite(srunner, s21_strrchr_suite());
   srunner_add_suite(srunner, s21_strstr_suite());
   srunner_add_suite(srunner, s21_strcspn_suite());
+  srunner_add_suite(srunner, s21_strtok_suite());
+  srunner_add_suite(srunner, s21_strerror_suite());
 
   srunner_run_all(srunner, CK_NORMAL);
   number_failed = srunner_ntests_failed(srunner);

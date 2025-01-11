@@ -26,3 +26,5 @@ Suite *s21_strpbrk_suite(void);
 Suite *s21_strrchr_suite(void);
 Suite *s21_strstr_suite(void);
 Suite *s21_strcspn_suite(void);
+Suite *s21_strtok_suite(void);
+Suite *s21_strerror_suite(void);
