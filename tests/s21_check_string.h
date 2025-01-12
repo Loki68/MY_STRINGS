@@ -1,4 +1,6 @@
 #include "../src/s21_string.h"
+#include "../src/sprintscan/dynamic_memory_helpers.h"
+#include "../src/sprintscan/sprint_sscan_parser.h"
 
 #include <stdio.h>
 //необходима тому же check.h, чтобы взять тот же пустой указатель NULL
@@ -28,3 +30,7 @@ Suite *s21_strstr_suite(void);
 Suite *s21_strcspn_suite(void);
 Suite *s21_strtok_suite(void);
 Suite *s21_strerror_suite(void);
+
+Suite *dynamic_memory_helpers_suite(void);
+Suite *sprint_sscan_parser_suite(void);
+Suite *s21_sprintf_suite(void);

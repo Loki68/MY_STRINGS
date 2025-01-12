@@ -41,6 +41,10 @@ int main(void) {
   srunner_add_suite(srunner, s21_strtok_suite());
   srunner_add_suite(srunner, s21_strerror_suite());
 
+  srunner_add_suite(srunner, dynamic_memory_helpers_suite());
+  srunner_add_suite(srunner, sprint_sscan_parser_suite());
+  srunner_add_suite(srunner, s21_sprintf_suite());
+
   srunner_run_all(srunner, CK_NORMAL);
   number_failed = srunner_ntests_failed(srunner);
   srunner_free(srunner);

@@ -18,9 +18,15 @@ RL = ranlib
 # Закомментирована строка с превращением предупреждений в ошибки.
 # Раскомментируется ближе к sprintf потому что заготовка есть,но она еще пустая,
 # и компилятор ругается на неиспользуемые параметры
-CFLAGS = -Wall -Wextra -Werror -std=c11
-SOURCE = s21_strlen.c s21_memchr.c s21_memcmp.c s21_memcpy.c s21_memset.c s21_strncat.c s21_strchr.c s21_strncmp.c s21_strncpy.c s21_strrchr.c s21_strpbrk.c s21_strstr.c s21_strcspn.c s21_strtok.c s21_strerror.c sprintscan/s21_sprintf.c
-OBJECTS = s21_strlen.o s21_memchr.o s21_memcmp.o s21_memcpy.o s21_memset.o s21_strncat.o s21_strchr.o s21_strncmp.o s21_strncpy.o s21_strrchr.o s21_strpbrk.o s21_strstr.o s21_strcspn.o s21_strtok.o s21_strerror.o s21_sprintf.o
+#CFLAGS = -Wall -Wextra -Werror -std=c11
+CFLAGS = -Wall -Wextra -std=c11
+MEM_SOURCE = s21_memchr.c s21_memcmp.c s21_memcpy.c s21_memset.c
+STR_SOURCE = s21_strlen.c s21_strncat.c s21_strchr.c s21_strncmp.c s21_strncpy.c s21_strrchr.c s21_strpbrk.c s21_strstr.c s21_strcspn.c s21_strtok.c s21_strerror.c
+SPRINT_SSCAN_DIR = sprintscan
+SPRINT_SSCAN_SOURCE = $(SPRINT_SSCAN_DIR)/s21_sprintf.c $(SPRINT_SSCAN_DIR)/sprint_sscan_parser.c $(SPRINT_SSCAN_DIR)/dynamic_memory_helpers.c
+
+SOURCE = $(MEM_SOURCE) $(STR_SOURCE) $(SPRINT_SSCAN_SOURCE)
+OBJECTS = s21_strlen.o s21_memchr.o s21_memcmp.o s21_memcpy.o s21_memset.o s21_strncat.o s21_strchr.o s21_strncmp.o s21_strncpy.o s21_strrchr.o s21_strpbrk.o s21_strstr.o s21_strcspn.o s21_strtok.o s21_strerror.o dynamic_memory_helpers.o sprint_sscan_parser.o s21_sprintf.o
 # Это флаги для подключения уже собранной библиотеки к тестовому проекту
 # Их можно было добавить в стандартную переменную LDFLAGS, но я подумал,что так нагляднее
 # Потому что библиотек оч много подключать в этом задании 
@@ -39,9 +45,13 @@ TESTS_DIR = ../tests
 # Собственно конечный тестовый файл
 TEST_PROGRAM = $(TESTS_DIR)/s21_check_string
 # Переменная для файлов исходного кода тестов
-TESTS = $(TESTS_DIR)/s21_check_string.c $(TESTS_DIR)/s21_memchr_test.c $(TESTS_DIR)/s21_memcmp_test.c $(TESTS_DIR)/s21_memcpy_test.c $(TESTS_DIR)/s21_memset_test.c $(TESTS_DIR)/s21_strchr_test.c $(TESTS_DIR)/s21_strlen_test.c $(TESTS_DIR)/s21_strncat_test.c $(TESTS_DIR)/s21_strncmp_test.c $(TESTS_DIR)/s21_strncpy_test.c $(TESTS_DIR)/s21_strpbrk_test.c $(TESTS_DIR)/s21_strrchr_test.c $(TESTS_DIR)/s21_strstr_test.c $(TESTS_DIR)/s21_strcspn_test.c  $(TESTS_DIR)/s21_strtok_test.c $(TESTS_DIR)/s21_strerror_test.c $(TESTS_DIR)/s21_sprintf_test.c
+MEM_TESTS = $(TESTS_DIR)/s21_memchr_test.c $(TESTS_DIR)/s21_memcmp_test.c $(TESTS_DIR)/s21_memcpy_test.c $(TESTS_DIR)/s21_memset_test.c
+STR_TESTS =$(TESTS_DIR)/s21_check_string.c  $(TESTS_DIR)/s21_strchr_test.c $(TESTS_DIR)/s21_strlen_test.c $(TESTS_DIR)/s21_strncat_test.c $(TESTS_DIR)/s21_strncmp_test.c $(TESTS_DIR)/s21_strncpy_test.c $(TESTS_DIR)/s21_strpbrk_test.c $(TESTS_DIR)/s21_strrchr_test.c $(TESTS_DIR)/s21_strstr_test.c $(TESTS_DIR)/s21_strcspn_test.c  $(TESTS_DIR)/s21_strtok_test.c $(TESTS_DIR)/s21_strerror_test.c
+SPRINT_SSCAN_TESTS = $(TESTS_DIR)/s21_sprintf_test.c $(TESTS_DIR)/sprint_sscan_parser_test.c  $(TESTS_DIR)/dynamic_memory_helpers_test.c
+
+TESTS = $(MEM_TESTS) $(STR_TESTS) $(SPRINT_SSCAN_TESTS)
 # Переменная для объектных файлов
-TESTS_OBJECTS = $(TESTS_DIR)/s21_check_string.o $(TESTS_DIR)/s21_memchr_test.o $(TESTS_DIR)/s21_memcmp_test.o $(TESTS_DIR)/s21_memcpy_test.o $(TESTS_DIR)/s21_memset_test.o $(TESTS_DIR)/s21_strchr_test.o $(TESTS_DIR)/s21_strlen_test.o $(TESTS_DIR)/s21_strncat_test.o $(TESTS_DIR)/s21_strncmp_test.o $(TESTS_DIR)/s21_strncpy_test.o $(TESTS_DIR)/s21_strpbrk_test.o $(TESTS_DIR)/s21_strrchr_test.o $(TESTS_DIR)/s21_strstr_test.o $(TESTS_DIR)/s21_strcspn_test.o $(TESTS_DIR)/s21_strtok_test.o $(TESTS_DIR)/s21_strerror_test.o $(TESTS_DIR)/s21_sprintf_test.o
+TESTS_OBJECTS = $(TESTS_DIR)/s21_check_string.o $(TESTS_DIR)/s21_memchr_test.o $(TESTS_DIR)/s21_memcmp_test.o $(TESTS_DIR)/s21_memcpy_test.o $(TESTS_DIR)/s21_memset_test.o $(TESTS_DIR)/s21_strchr_test.o $(TESTS_DIR)/s21_strlen_test.o $(TESTS_DIR)/s21_strncat_test.o $(TESTS_DIR)/s21_strncmp_test.o $(TESTS_DIR)/s21_strncpy_test.o $(TESTS_DIR)/s21_strpbrk_test.o $(TESTS_DIR)/s21_strrchr_test.o $(TESTS_DIR)/s21_strstr_test.o $(TESTS_DIR)/s21_strcspn_test.o $(TESTS_DIR)/s21_strtok_test.o $(TESTS_DIR)/s21_strerror_test.o $(TESTS_DIR)/dynamic_memory_helpers_test.o $(TESTS_DIR)/sprint_sscan_parser_test.o $(TESTS_DIR)/s21_sprintf_test.o
 # Самая интересная часть. здесь указаны флаги для сборки только на линуксе.
 # С этим связан нюанс. на маке достаточно -lcheck, но наличие их всех не вызывает никаких проблем вовсе.
 # По итогу, просто обернем это в if с выбором системы и все.
@@ -129,8 +139,14 @@ s21_strerror :
 
 
 
-s21_sprintf :
-	$(CC) $(CFLAGS) -c sprintscan/s21_sprintf.c -o s21_sprintf.o
+s21_sprintf : dynamic_memory_helpers sprint_sscan_parser
+	$(CC) $(CFLAGS) -c $(SPRINT_SSCAN_DIR)/s21_sprintf.c -o s21_sprintf.o
+
+sprint_sscan_parser : 
+	$(CC) $(CFLAGS) -c $(SPRINT_SSCAN_DIR)/sprint_sscan_parser.c -o sprint_sscan_parser.o
+
+dynamic_memory_helpers :
+	$(CC) $(CFLAGS) -c $(SPRINT_SSCAN_DIR)/dynamic_memory_helpers.c -o dynamic_memory_helpers.o
 
 #конец стадии s21_string.a
 
@@ -140,10 +156,10 @@ s21_sprintf :
 test : build_tests test_program 
 	$(TEST_PROGRAM)
 	
-test_program : s21_string.a build_tests s21_memchr_tests s21_memcmp_tests s21_memcpy_tests s21_memset_tests s21_strchr_tests s21_strlen_tests s21_strncat_tests s21_strncmp_tests s21_strncpy_tests s21_strpbrk_tests s21_strrchr_tests s21_strstr_tests s21_strcspn_tests s21_strtok_tests s21_strerror_tests s21_sprintf_tests
+test_program : s21_string.a build_tests 
 	$(CC) $(TESTS_OBJECTS) -o $(TEST_PROGRAM) $(LIB) $(TEST_FLAGS) 
 
-build_tests :
+build_tests : s21_memchr_tests s21_memcmp_tests s21_memcpy_tests s21_memset_tests s21_strchr_tests s21_strlen_tests s21_strncat_tests s21_strncmp_tests s21_strncpy_tests s21_strpbrk_tests s21_strrchr_tests s21_strstr_tests s21_strcspn_tests s21_strtok_tests s21_strerror_tests dynamic_memory_helpers_tests sprint_sscan_parser_tests s21_sprintf_tests
 	$(CC) $(CFLAGS) -c $(TESTS_DIR)/s21_check_string.c -o $(TESTS_DIR)/s21_check_string.o
 
 s21_memchr_tests :
@@ -197,12 +213,18 @@ s21_strerror_tests :
 
 s21_sprintf_tests :
 	$(CC) $(CFLAGS) -c $(TESTS_DIR)/s21_sprintf_test.c -o $(TESTS_DIR)/s21_sprintf_test.o
+
+sprint_sscan_parser_tests :
+	$(CC) $(CFLAGS) -c $(TESTS_DIR)/sprint_sscan_parser_test.c -o $(TESTS_DIR)/sprint_sscan_parser_test.o
+
+dynamic_memory_helpers_tests : 
+	$(CC) $(CFLAGS) -c $(TESTS_DIR)/dynamic_memory_helpers_test.c -o $(TESTS_DIR)/dynamic_memory_helpers_test.o
 #end of Test stages
 
 #Стадия построения отчета о покрытии кода тестами - gcov_report
 # Напоминаю, что подробности по ссылке:
 # https://ps-group.github.io/cxx/coverage_gcc
-gcov_report :
+gcov_report : 
 # В соответствии с требованием создания отчета, собираем:
 # из файлов исходного кода функций нашей библиотеки $(SOURCE)
 # из файлов исходного кода тестов $(TESTS)
@@ -230,6 +252,7 @@ clean :
 	rm -rf $(TESTS_OBJECTS) $(TEST_PROGRAM)
 # Чистим файлы, сгенерированные gcov/lcov/genhtml и удаляем папку с вебмордой ака html
 	rm -rf $(GCOV_RESULT) $(GCOV_REPORT_DIR)
+#	rm -rf *.gcno
 #конец стадии clean
 
 scan_project_on_format:
