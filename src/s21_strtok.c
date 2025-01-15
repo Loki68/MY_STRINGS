@@ -1,4 +1,5 @@
 #include "s21_string.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 char *s21_strtok(char *str, const char *delim) {
@@ -10,14 +11,11 @@ char *s21_strtok(char *str, const char *delim) {
   int lenOfToken = 0;
   int letters = 0;
   int plusDelimer = 0;
-  out = malloc(sizeof(*buffer));
-  s21_memset(out, '\0', sizeof(*buffer));
+  out = malloc(s21_strlen(buffer) + 1);
+  s21_memset(out, '\0', s21_strlen(buffer) + 1);
   for (int i = 0; buffer[i] != '\0'; i++) {
     int counter = 0;
     for (int j = 0; delim[j] != '\0'; j++) {
-      if (buffer[i] == '\0') {
-        break;
-      }
       if (delim[j] != buffer[i]) {
         counter += 1;
       }
