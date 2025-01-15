@@ -1,5 +1,4 @@
 #include "s21_string.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 char *s21_strtok(char *str, const char *delim) {
